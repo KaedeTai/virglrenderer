@@ -97,8 +97,10 @@ npt_dispatch_ID3D11ClassLinkage_GetClassInstance(struct npt_dispatch_context *ct
 
     npt_decode_ID3D11ClassLinkage_GetClassInstance_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11ClassLinkage_GetClassInstance: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11CLASSLINKAGE);
@@ -120,6 +122,8 @@ npt_dispatch_ID3D11ClassLinkage_GetClassInstance(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11ClassLinkage_GetClassInstance on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -138,6 +142,8 @@ npt_dispatch_ID3D11ClassLinkage_GetClassInstance(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11ClassLinkage_GetClassInstance: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -259,8 +265,10 @@ npt_dispatch_ID3D11ClassLinkage_CreateClassInstance(struct npt_dispatch_context 
 
     npt_decode_ID3D11ClassLinkage_CreateClassInstance_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11ClassLinkage_CreateClassInstance: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11CLASSLINKAGE);
@@ -282,6 +290,8 @@ npt_dispatch_ID3D11ClassLinkage_CreateClassInstance(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11ClassLinkage_CreateClassInstance on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -300,6 +310,8 @@ npt_dispatch_ID3D11ClassLinkage_CreateClassInstance(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11ClassLinkage_CreateClassInstance: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

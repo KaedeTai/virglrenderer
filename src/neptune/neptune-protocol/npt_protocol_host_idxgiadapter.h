@@ -85,8 +85,10 @@ npt_dispatch_IDXGIAdapter_EnumOutputs(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIAdapter_EnumOutputs_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter_EnumOutputs: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER);
@@ -108,6 +110,8 @@ npt_dispatch_IDXGIAdapter_EnumOutputs(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter_EnumOutputs on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -126,6 +130,8 @@ npt_dispatch_IDXGIAdapter_EnumOutputs(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter_EnumOutputs: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -210,8 +216,10 @@ npt_dispatch_IDXGIAdapter_GetDesc(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIAdapter_GetDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter_GetDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER);
@@ -233,6 +241,8 @@ npt_dispatch_IDXGIAdapter_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter_GetDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -251,6 +261,8 @@ npt_dispatch_IDXGIAdapter_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter_GetDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -344,8 +356,10 @@ npt_dispatch_IDXGIAdapter_CheckInterfaceSupport(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIAdapter_CheckInterfaceSupport_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter_CheckInterfaceSupport: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER);
@@ -367,6 +381,8 @@ npt_dispatch_IDXGIAdapter_CheckInterfaceSupport(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter_CheckInterfaceSupport on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -385,6 +401,8 @@ npt_dispatch_IDXGIAdapter_CheckInterfaceSupport(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter_CheckInterfaceSupport: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -467,8 +485,10 @@ npt_dispatch_IDXGIAdapter1_GetDesc1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIAdapter1_GetDesc1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter1_GetDesc1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER1);
@@ -490,6 +510,8 @@ npt_dispatch_IDXGIAdapter1_GetDesc1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter1_GetDesc1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -508,6 +530,8 @@ npt_dispatch_IDXGIAdapter1_GetDesc1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter1_GetDesc1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -590,8 +614,10 @@ npt_dispatch_IDXGIAdapter2_GetDesc2(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIAdapter2_GetDesc2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter2_GetDesc2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER2);
@@ -613,6 +639,8 @@ npt_dispatch_IDXGIAdapter2_GetDesc2(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter2_GetDesc2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -631,6 +659,8 @@ npt_dispatch_IDXGIAdapter2_GetDesc2(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter2_GetDesc2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -721,8 +751,10 @@ npt_dispatch_IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent(
 
     npt_decode_IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER3);
@@ -744,6 +776,8 @@ npt_dispatch_IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent(
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -762,6 +796,8 @@ npt_dispatch_IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent(
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -839,8 +875,10 @@ npt_dispatch_IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus(str
 
     npt_decode_IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER3);
@@ -862,6 +900,8 @@ npt_dispatch_IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus(str
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -880,6 +920,8 @@ npt_dispatch_IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus(str
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -968,8 +1010,10 @@ npt_dispatch_IDXGIAdapter3_QueryVideoMemoryInfo(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIAdapter3_QueryVideoMemoryInfo_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter3_QueryVideoMemoryInfo: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER3);
@@ -991,6 +1035,8 @@ npt_dispatch_IDXGIAdapter3_QueryVideoMemoryInfo(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_QueryVideoMemoryInfo on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1009,6 +1055,8 @@ npt_dispatch_IDXGIAdapter3_QueryVideoMemoryInfo(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_QueryVideoMemoryInfo: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1093,8 +1141,10 @@ npt_dispatch_IDXGIAdapter3_SetVideoMemoryReservation(struct npt_dispatch_context
 
     npt_decode_IDXGIAdapter3_SetVideoMemoryReservation_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter3_SetVideoMemoryReservation: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER3);
@@ -1116,6 +1166,8 @@ npt_dispatch_IDXGIAdapter3_SetVideoMemoryReservation(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_SetVideoMemoryReservation on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1134,6 +1186,8 @@ npt_dispatch_IDXGIAdapter3_SetVideoMemoryReservation(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_SetVideoMemoryReservation: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1224,8 +1278,10 @@ npt_dispatch_IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent(stru
 
     npt_decode_IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER3);
@@ -1247,6 +1303,8 @@ npt_dispatch_IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent(stru
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1265,6 +1323,8 @@ npt_dispatch_IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent(stru
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1342,8 +1402,10 @@ npt_dispatch_IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification(struct 
 
     npt_decode_IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER3);
@@ -1365,6 +1427,8 @@ npt_dispatch_IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification(struct 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1383,6 +1447,8 @@ npt_dispatch_IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification(struct 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1465,8 +1531,10 @@ npt_dispatch_IDXGIAdapter4_GetDesc3(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIAdapter4_GetDesc3_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIAdapter4_GetDesc3: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIADAPTER4);
@@ -1488,6 +1556,8 @@ npt_dispatch_IDXGIAdapter4_GetDesc3(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter4_GetDesc3 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1506,6 +1576,8 @@ npt_dispatch_IDXGIAdapter4_GetDesc3(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIAdapter4_GetDesc3: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

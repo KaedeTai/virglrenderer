@@ -62,8 +62,10 @@ npt_dispatch_IDXGIDisplayControl_IsStereoEnabled(struct npt_dispatch_context *ct
 
     npt_decode_IDXGIDisplayControl_IsStereoEnabled_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDisplayControl_IsStereoEnabled: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDISPLAYCONTROL);
@@ -85,6 +87,8 @@ npt_dispatch_IDXGIDisplayControl_IsStereoEnabled(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDisplayControl_IsStereoEnabled on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -103,6 +107,8 @@ npt_dispatch_IDXGIDisplayControl_IsStereoEnabled(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDisplayControl_IsStereoEnabled: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -180,8 +186,10 @@ npt_dispatch_IDXGIDisplayControl_SetStereoEnabled(struct npt_dispatch_context *c
 
     npt_decode_IDXGIDisplayControl_SetStereoEnabled_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDisplayControl_SetStereoEnabled: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDISPLAYCONTROL);
@@ -203,6 +211,8 @@ npt_dispatch_IDXGIDisplayControl_SetStereoEnabled(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDisplayControl_SetStereoEnabled on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -221,6 +231,8 @@ npt_dispatch_IDXGIDisplayControl_SetStereoEnabled(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDisplayControl_SetStereoEnabled: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

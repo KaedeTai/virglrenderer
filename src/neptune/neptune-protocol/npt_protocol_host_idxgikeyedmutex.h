@@ -67,8 +67,10 @@ npt_dispatch_IDXGIKeyedMutex_AcquireSync(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIKeyedMutex_AcquireSync_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIKeyedMutex_AcquireSync: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIKEYEDMUTEX);
@@ -90,6 +92,8 @@ npt_dispatch_IDXGIKeyedMutex_AcquireSync(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIKeyedMutex_AcquireSync on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -108,6 +112,8 @@ npt_dispatch_IDXGIKeyedMutex_AcquireSync(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIKeyedMutex_AcquireSync: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -186,8 +192,10 @@ npt_dispatch_IDXGIKeyedMutex_ReleaseSync(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIKeyedMutex_ReleaseSync_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIKeyedMutex_ReleaseSync: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIKEYEDMUTEX);
@@ -209,6 +217,8 @@ npt_dispatch_IDXGIKeyedMutex_ReleaseSync(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIKeyedMutex_ReleaseSync on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -227,6 +237,8 @@ npt_dispatch_IDXGIKeyedMutex_ReleaseSync(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIKeyedMutex_ReleaseSync: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

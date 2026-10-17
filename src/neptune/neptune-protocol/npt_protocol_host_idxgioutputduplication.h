@@ -67,8 +67,10 @@ npt_dispatch_IDXGIOutputDuplication_GetDesc(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIOutputDuplication_GetDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_GetDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -90,6 +92,8 @@ npt_dispatch_IDXGIOutputDuplication_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -108,6 +112,8 @@ npt_dispatch_IDXGIOutputDuplication_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -214,8 +220,10 @@ npt_dispatch_IDXGIOutputDuplication_AcquireNextFrame(struct npt_dispatch_context
 
     npt_decode_IDXGIOutputDuplication_AcquireNextFrame_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_AcquireNextFrame: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -237,6 +245,8 @@ npt_dispatch_IDXGIOutputDuplication_AcquireNextFrame(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_AcquireNextFrame on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -255,6 +265,8 @@ npt_dispatch_IDXGIOutputDuplication_AcquireNextFrame(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_AcquireNextFrame: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -364,8 +376,10 @@ npt_dispatch_IDXGIOutputDuplication_GetFrameDirtyRects(struct npt_dispatch_conte
 
     npt_decode_IDXGIOutputDuplication_GetFrameDirtyRects_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_GetFrameDirtyRects: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -387,6 +401,8 @@ npt_dispatch_IDXGIOutputDuplication_GetFrameDirtyRects(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetFrameDirtyRects on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -405,6 +421,8 @@ npt_dispatch_IDXGIOutputDuplication_GetFrameDirtyRects(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetFrameDirtyRects: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -512,8 +530,10 @@ npt_dispatch_IDXGIOutputDuplication_GetFrameMoveRects(struct npt_dispatch_contex
 
     npt_decode_IDXGIOutputDuplication_GetFrameMoveRects_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_GetFrameMoveRects: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -535,6 +555,8 @@ npt_dispatch_IDXGIOutputDuplication_GetFrameMoveRects(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetFrameMoveRects on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -553,6 +575,8 @@ npt_dispatch_IDXGIOutputDuplication_GetFrameMoveRects(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetFrameMoveRects: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -667,8 +691,10 @@ npt_dispatch_IDXGIOutputDuplication_GetFramePointerShape(struct npt_dispatch_con
 
     npt_decode_IDXGIOutputDuplication_GetFramePointerShape_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_GetFramePointerShape: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -690,6 +716,8 @@ npt_dispatch_IDXGIOutputDuplication_GetFramePointerShape(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetFramePointerShape on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -708,6 +736,8 @@ npt_dispatch_IDXGIOutputDuplication_GetFramePointerShape(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_GetFramePointerShape: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -784,8 +814,10 @@ npt_dispatch_IDXGIOutputDuplication_UnMapDesktopSurface(struct npt_dispatch_cont
 
     npt_decode_IDXGIOutputDuplication_UnMapDesktopSurface_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_UnMapDesktopSurface: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -807,6 +839,8 @@ npt_dispatch_IDXGIOutputDuplication_UnMapDesktopSurface(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_UnMapDesktopSurface on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -825,6 +859,8 @@ npt_dispatch_IDXGIOutputDuplication_UnMapDesktopSurface(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_UnMapDesktopSurface: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -901,8 +937,10 @@ npt_dispatch_IDXGIOutputDuplication_ReleaseFrame(struct npt_dispatch_context *ct
 
     npt_decode_IDXGIOutputDuplication_ReleaseFrame_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIOutputDuplication_ReleaseFrame: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIOUTPUTDUPLICATION);
@@ -924,6 +962,8 @@ npt_dispatch_IDXGIOutputDuplication_ReleaseFrame(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_ReleaseFrame on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -942,6 +982,8 @@ npt_dispatch_IDXGIOutputDuplication_ReleaseFrame(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIOutputDuplication_ReleaseFrame: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

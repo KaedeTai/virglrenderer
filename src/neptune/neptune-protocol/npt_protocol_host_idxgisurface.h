@@ -68,8 +68,10 @@ npt_dispatch_IDXGISurface_GetDesc(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISurface_GetDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISurface_GetDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISURFACE);
@@ -91,6 +93,8 @@ npt_dispatch_IDXGISurface_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface_GetDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -109,6 +113,8 @@ npt_dispatch_IDXGISurface_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface_GetDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -185,8 +191,10 @@ npt_dispatch_IDXGISurface_Unmap(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISurface_Unmap_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISurface_Unmap: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISURFACE);
@@ -208,6 +216,8 @@ npt_dispatch_IDXGISurface_Unmap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface_Unmap on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -226,6 +236,8 @@ npt_dispatch_IDXGISurface_Unmap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface_Unmap: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -311,8 +323,10 @@ npt_dispatch_IDXGISurface1_GetDC(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISurface1_GetDC_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISurface1_GetDC: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISURFACE1);
@@ -334,6 +348,8 @@ npt_dispatch_IDXGISurface1_GetDC(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface1_GetDC on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -352,6 +368,8 @@ npt_dispatch_IDXGISurface1_GetDC(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface1_GetDC: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -436,8 +454,10 @@ npt_dispatch_IDXGISurface1_ReleaseDC(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISurface1_ReleaseDC_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISurface1_ReleaseDC: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISURFACE1);
@@ -459,6 +479,8 @@ npt_dispatch_IDXGISurface1_ReleaseDC(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface1_ReleaseDC on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -477,6 +499,8 @@ npt_dispatch_IDXGISurface1_ReleaseDC(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface1_ReleaseDC: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -591,8 +615,10 @@ npt_dispatch_IDXGISurface2_GetResource(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISurface2_GetResource_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISurface2_GetResource: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISURFACE2);
@@ -614,6 +640,8 @@ npt_dispatch_IDXGISurface2_GetResource(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface2_GetResource on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -632,6 +660,8 @@ npt_dispatch_IDXGISurface2_GetResource(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISurface2_GetResource: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

@@ -67,8 +67,10 @@ npt_dispatch_ID3D11VideoProcessor_GetContentDesc(struct npt_dispatch_context *ct
 
     npt_decode_ID3D11VideoProcessor_GetContentDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoProcessor_GetContentDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOPROCESSOR);
@@ -90,6 +92,8 @@ npt_dispatch_ID3D11VideoProcessor_GetContentDesc(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoProcessor_GetContentDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -108,6 +112,8 @@ npt_dispatch_ID3D11VideoProcessor_GetContentDesc(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoProcessor_GetContentDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -189,8 +195,10 @@ npt_dispatch_ID3D11VideoProcessor_GetRateConversionCaps(struct npt_dispatch_cont
 
     npt_decode_ID3D11VideoProcessor_GetRateConversionCaps_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoProcessor_GetRateConversionCaps: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOPROCESSOR);
@@ -212,6 +220,8 @@ npt_dispatch_ID3D11VideoProcessor_GetRateConversionCaps(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoProcessor_GetRateConversionCaps on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -230,6 +240,8 @@ npt_dispatch_ID3D11VideoProcessor_GetRateConversionCaps(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoProcessor_GetRateConversionCaps: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

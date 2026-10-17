@@ -82,8 +82,10 @@ npt_dispatch_IDXGIDevice_GetAdapter(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice_GetAdapter_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice_GetAdapter: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE);
@@ -105,6 +107,8 @@ npt_dispatch_IDXGIDevice_GetAdapter(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_GetAdapter on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -123,6 +127,8 @@ npt_dispatch_IDXGIDevice_GetAdapter(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_GetAdapter: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -256,8 +262,10 @@ npt_dispatch_IDXGIDevice_CreateSurface(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice_CreateSurface_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice_CreateSurface: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE);
@@ -280,6 +288,8 @@ npt_dispatch_IDXGIDevice_CreateSurface(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_CreateSurface on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -299,6 +309,8 @@ npt_dispatch_IDXGIDevice_CreateSurface(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_CreateSurface: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -430,8 +442,10 @@ npt_dispatch_IDXGIDevice_QueryResourceResidency(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDevice_QueryResourceResidency_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice_QueryResourceResidency: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE);
@@ -453,6 +467,8 @@ npt_dispatch_IDXGIDevice_QueryResourceResidency(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_QueryResourceResidency on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -471,6 +487,8 @@ npt_dispatch_IDXGIDevice_QueryResourceResidency(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_QueryResourceResidency: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -549,8 +567,10 @@ npt_dispatch_IDXGIDevice_SetGPUThreadPriority(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice_SetGPUThreadPriority_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice_SetGPUThreadPriority: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE);
@@ -572,6 +592,8 @@ npt_dispatch_IDXGIDevice_SetGPUThreadPriority(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_SetGPUThreadPriority on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -590,6 +612,8 @@ npt_dispatch_IDXGIDevice_SetGPUThreadPriority(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_SetGPUThreadPriority: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -672,8 +696,10 @@ npt_dispatch_IDXGIDevice_GetGPUThreadPriority(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice_GetGPUThreadPriority_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice_GetGPUThreadPriority: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE);
@@ -695,6 +721,8 @@ npt_dispatch_IDXGIDevice_GetGPUThreadPriority(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_GetGPUThreadPriority on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -713,6 +741,8 @@ npt_dispatch_IDXGIDevice_GetGPUThreadPriority(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice_GetGPUThreadPriority: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -791,8 +821,10 @@ npt_dispatch_IDXGIDevice1_SetMaximumFrameLatency(struct npt_dispatch_context *ct
 
     npt_decode_IDXGIDevice1_SetMaximumFrameLatency_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice1_SetMaximumFrameLatency: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE1);
@@ -814,6 +846,8 @@ npt_dispatch_IDXGIDevice1_SetMaximumFrameLatency(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice1_SetMaximumFrameLatency on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -832,6 +866,8 @@ npt_dispatch_IDXGIDevice1_SetMaximumFrameLatency(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice1_SetMaximumFrameLatency: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -914,8 +950,10 @@ npt_dispatch_IDXGIDevice1_GetMaximumFrameLatency(struct npt_dispatch_context *ct
 
     npt_decode_IDXGIDevice1_GetMaximumFrameLatency_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice1_GetMaximumFrameLatency: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE1);
@@ -937,6 +975,8 @@ npt_dispatch_IDXGIDevice1_GetMaximumFrameLatency(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice1_GetMaximumFrameLatency on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -955,6 +995,8 @@ npt_dispatch_IDXGIDevice1_GetMaximumFrameLatency(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice1_GetMaximumFrameLatency: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1063,8 +1105,10 @@ npt_dispatch_IDXGIDevice2_OfferResources(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice2_OfferResources_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice2_OfferResources: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE2);
@@ -1086,6 +1130,8 @@ npt_dispatch_IDXGIDevice2_OfferResources(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice2_OfferResources on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1104,6 +1150,8 @@ npt_dispatch_IDXGIDevice2_OfferResources(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice2_OfferResources: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1224,8 +1272,10 @@ npt_dispatch_IDXGIDevice2_ReclaimResources(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice2_ReclaimResources_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice2_ReclaimResources: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE2);
@@ -1247,6 +1297,8 @@ npt_dispatch_IDXGIDevice2_ReclaimResources(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice2_ReclaimResources on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1265,6 +1317,8 @@ npt_dispatch_IDXGIDevice2_ReclaimResources(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice2_ReclaimResources: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1348,8 +1402,10 @@ npt_dispatch_IDXGIDevice2_EnqueueSetEvent(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice2_EnqueueSetEvent_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice2_EnqueueSetEvent: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE2);
@@ -1371,6 +1427,8 @@ npt_dispatch_IDXGIDevice2_EnqueueSetEvent(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice2_EnqueueSetEvent on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1389,6 +1447,8 @@ npt_dispatch_IDXGIDevice2_EnqueueSetEvent(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice2_EnqueueSetEvent: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1464,8 +1524,10 @@ npt_dispatch_IDXGIDevice3_Trim(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice3_Trim_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice3_Trim: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE3);
@@ -1487,6 +1549,8 @@ npt_dispatch_IDXGIDevice3_Trim(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice3_Trim on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1505,6 +1569,8 @@ npt_dispatch_IDXGIDevice3_Trim(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice3_Trim: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1616,8 +1682,10 @@ npt_dispatch_IDXGIDevice4_OfferResources1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice4_OfferResources1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice4_OfferResources1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE4);
@@ -1639,6 +1707,8 @@ npt_dispatch_IDXGIDevice4_OfferResources1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice4_OfferResources1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1657,6 +1727,8 @@ npt_dispatch_IDXGIDevice4_OfferResources1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice4_OfferResources1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1777,8 +1849,10 @@ npt_dispatch_IDXGIDevice4_ReclaimResources1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDevice4_ReclaimResources1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDevice4_ReclaimResources1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDEVICE4);
@@ -1800,6 +1874,8 @@ npt_dispatch_IDXGIDevice4_ReclaimResources1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice4_ReclaimResources1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1818,6 +1894,8 @@ npt_dispatch_IDXGIDevice4_ReclaimResources1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDevice4_ReclaimResources1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

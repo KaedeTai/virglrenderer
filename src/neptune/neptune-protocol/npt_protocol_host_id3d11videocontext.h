@@ -97,8 +97,10 @@ npt_dispatch_ID3D11VideoContext_DecoderBeginFrame(struct npt_dispatch_context *c
 
     npt_decode_ID3D11VideoContext_DecoderBeginFrame_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_DecoderBeginFrame: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -120,6 +122,8 @@ npt_dispatch_ID3D11VideoContext_DecoderBeginFrame(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecoderBeginFrame on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -138,6 +142,8 @@ npt_dispatch_ID3D11VideoContext_DecoderBeginFrame(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecoderBeginFrame: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -221,8 +227,10 @@ npt_dispatch_ID3D11VideoContext_DecoderEndFrame(struct npt_dispatch_context *ctx
 
     npt_decode_ID3D11VideoContext_DecoderEndFrame_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_DecoderEndFrame: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -244,6 +252,8 @@ npt_dispatch_ID3D11VideoContext_DecoderEndFrame(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecoderEndFrame on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -262,6 +272,8 @@ npt_dispatch_ID3D11VideoContext_DecoderEndFrame(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecoderEndFrame: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -367,8 +379,10 @@ npt_dispatch_ID3D11VideoContext_SubmitDecoderBuffers(struct npt_dispatch_context
 
     npt_decode_ID3D11VideoContext_SubmitDecoderBuffers_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_SubmitDecoderBuffers: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -390,6 +404,8 @@ npt_dispatch_ID3D11VideoContext_SubmitDecoderBuffers(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_SubmitDecoderBuffers on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -408,6 +424,8 @@ npt_dispatch_ID3D11VideoContext_SubmitDecoderBuffers(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_SubmitDecoderBuffers: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -504,8 +522,10 @@ npt_dispatch_ID3D11VideoContext_DecoderExtension(struct npt_dispatch_context *ct
 
     npt_decode_ID3D11VideoContext_DecoderExtension_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_DecoderExtension: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -527,6 +547,8 @@ npt_dispatch_ID3D11VideoContext_DecoderExtension(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecoderExtension on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -545,6 +567,8 @@ npt_dispatch_ID3D11VideoContext_DecoderExtension(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecoderExtension: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -639,8 +663,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputTargetRect(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputTargetRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputTargetRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -662,6 +688,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputTargetRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputTargetRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -680,6 +708,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputTargetRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputTargetRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -776,8 +806,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor(struct np
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -799,6 +831,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor(struct np
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -817,6 +851,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor(struct np
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputBackgroundColor: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -910,8 +946,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputColorSpace(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputColorSpace_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputColorSpace: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -933,6 +971,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputColorSpace on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -951,6 +991,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputColorSpace: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1039,8 +1081,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode(struct npt_
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1062,6 +1106,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode(struct npt_
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1080,6 +1126,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode(struct npt_
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputAlphaFillMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1168,8 +1216,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputConstriction(struct npt_d
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputConstriction_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputConstriction: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1191,6 +1241,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputConstriction(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputConstriction on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1209,6 +1261,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputConstriction(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputConstriction: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1294,8 +1348,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputStereoMode(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputStereoMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputStereoMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1317,6 +1373,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputStereoMode(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputStereoMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1335,6 +1393,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputStereoMode(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputStereoMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1436,8 +1496,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputExtension(struct npt_disp
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetOutputExtension_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputExtension: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1459,6 +1521,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputExtension on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1477,6 +1541,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetOutputExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetOutputExtension: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1573,8 +1639,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputTargetRect(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputTargetRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputTargetRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1596,6 +1664,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputTargetRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputTargetRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1614,6 +1684,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputTargetRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputTargetRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1710,8 +1782,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor(struct np
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1733,6 +1807,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor(struct np
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1751,6 +1827,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor(struct np
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputBackgroundColor: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1840,8 +1918,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputColorSpace(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputColorSpace_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputColorSpace: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -1863,6 +1943,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputColorSpace on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1881,6 +1963,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputColorSpace: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1977,8 +2061,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode(struct npt_
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2000,6 +2086,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode(struct npt_
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2018,6 +2106,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode(struct npt_
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputAlphaFillMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2114,8 +2204,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputConstriction(struct npt_d
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputConstriction_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputConstriction: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2137,6 +2229,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputConstriction(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputConstriction on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2155,6 +2249,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputConstriction(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputConstriction: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2244,8 +2340,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputStereoMode(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputStereoMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputStereoMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2267,6 +2365,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputStereoMode(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputStereoMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2285,6 +2385,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputStereoMode(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputStereoMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2397,8 +2499,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputExtension(struct npt_disp
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetOutputExtension_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputExtension: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2420,6 +2524,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputExtension on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2438,6 +2544,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetOutputExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetOutputExtension: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2526,8 +2634,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamFrameFormat(struct npt_di
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamFrameFormat_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamFrameFormat: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2549,6 +2659,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamFrameFormat(struct npt_di
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamFrameFormat on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2567,6 +2679,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamFrameFormat(struct npt_di
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamFrameFormat: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2663,8 +2777,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamColorSpace(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamColorSpace_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamColorSpace: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2686,6 +2802,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamColorSpace on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2704,6 +2822,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamColorSpace: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2804,8 +2924,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamOutputRate(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamOutputRate_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamOutputRate: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2827,6 +2949,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamOutputRate(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamOutputRate on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2845,6 +2969,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamOutputRate(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamOutputRate: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2942,8 +3068,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamSourceRect(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamSourceRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamSourceRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -2965,6 +3093,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamSourceRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamSourceRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2983,6 +3113,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamSourceRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamSourceRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3080,8 +3212,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamDestRect(struct npt_dispa
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamDestRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamDestRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3103,6 +3237,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamDestRect(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamDestRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3121,6 +3257,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamDestRect(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamDestRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3212,8 +3350,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamAlpha(struct npt_dispatch
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamAlpha_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamAlpha: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3235,6 +3375,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamAlpha(struct npt_dispatch
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamAlpha on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3253,6 +3395,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamAlpha(struct npt_dispatch
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamAlpha: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3358,8 +3502,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamPalette(struct npt_dispat
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamPalette_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamPalette: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3381,6 +3527,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamPalette(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamPalette on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3399,6 +3547,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamPalette(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamPalette: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3505,8 +3655,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio(struct n
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3528,6 +3680,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio(struct n
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3546,6 +3700,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio(struct n
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamPixelAspectRatio: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3640,8 +3796,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamLumaKey(struct npt_dispat
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamLumaKey_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamLumaKey: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3663,6 +3821,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamLumaKey(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamLumaKey on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3681,6 +3841,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamLumaKey(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamLumaKey: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3784,8 +3946,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamStereoFormat(struct npt_d
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamStereoFormat_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamStereoFormat: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3807,6 +3971,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamStereoFormat(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamStereoFormat on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3825,6 +3991,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamStereoFormat(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamStereoFormat: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3913,8 +4081,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode(struct
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -3936,6 +4106,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode(struct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3954,6 +4126,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode(struct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamAutoProcessingMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4048,8 +4222,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamFilter(struct npt_dispatc
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamFilter_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamFilter: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4071,6 +4247,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamFilter(struct npt_dispatc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamFilter on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4089,6 +4267,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamFilter(struct npt_dispatc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamFilter: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4193,8 +4373,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamExtension(struct npt_disp
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamExtension_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamExtension: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4216,6 +4398,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamExtension on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4234,6 +4418,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamExtension: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4326,8 +4512,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamFrameFormat(struct npt_di
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamFrameFormat_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamFrameFormat: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4349,6 +4537,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamFrameFormat(struct npt_di
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamFrameFormat on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4367,6 +4557,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamFrameFormat(struct npt_di
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamFrameFormat: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4459,8 +4651,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamColorSpace(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamColorSpace_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamColorSpace: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4482,6 +4676,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamColorSpace on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4500,6 +4696,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamColorSpace(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamColorSpace: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4606,8 +4804,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamOutputRate(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamOutputRate_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamOutputRate: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4629,6 +4829,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamOutputRate(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamOutputRate on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4647,6 +4849,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamOutputRate(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamOutputRate: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4746,8 +4950,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamSourceRect(struct npt_dis
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamSourceRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamSourceRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4769,6 +4975,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamSourceRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamSourceRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4787,6 +4995,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamSourceRect(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamSourceRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4886,8 +5096,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamDestRect(struct npt_dispa
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamDestRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamDestRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -4909,6 +5121,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamDestRect(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamDestRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4927,6 +5141,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamDestRect(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamDestRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5026,8 +5242,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamAlpha(struct npt_dispatch
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamAlpha_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamAlpha: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5049,6 +5267,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamAlpha(struct npt_dispatch
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamAlpha on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5067,6 +5287,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamAlpha(struct npt_dispatch
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamAlpha: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5170,8 +5392,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamPalette(struct npt_dispat
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamPalette_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamPalette: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5193,6 +5417,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamPalette(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamPalette on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5211,6 +5437,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamPalette(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamPalette: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5317,8 +5545,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio(struct n
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5340,6 +5570,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio(struct n
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5358,6 +5590,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio(struct n
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamPixelAspectRatio: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5464,8 +5698,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamLumaKey(struct npt_dispat
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamLumaKey_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamLumaKey: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5487,6 +5723,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamLumaKey(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamLumaKey on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5505,6 +5743,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamLumaKey(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamLumaKey: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5632,8 +5872,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamStereoFormat(struct npt_d
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamStereoFormat_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamStereoFormat: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5655,6 +5897,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamStereoFormat(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamStereoFormat on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5673,6 +5917,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamStereoFormat(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamStereoFormat: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5765,8 +6011,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode(struct
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5788,6 +6036,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode(struct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5806,6 +6056,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode(struct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamAutoProcessingMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5908,8 +6160,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamFilter(struct npt_dispatc
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamFilter_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamFilter: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -5931,6 +6185,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamFilter(struct npt_dispatc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamFilter on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5949,6 +6205,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamFilter(struct npt_dispatc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamFilter: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6064,8 +6322,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamExtension(struct npt_disp
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamExtension_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamExtension: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -6087,6 +6347,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamExtension on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6105,6 +6367,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamExtension(struct npt_disp
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamExtension: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6225,8 +6489,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorBlt(struct npt_dispatch_context *c
 
     npt_decode_ID3D11VideoContext_VideoProcessorBlt_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorBlt: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -6248,6 +6514,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorBlt(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorBlt on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6266,6 +6534,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorBlt(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorBlt: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6376,8 +6646,10 @@ npt_dispatch_ID3D11VideoContext_NegotiateCryptoSessionKeyExchange(struct npt_dis
 
     npt_decode_ID3D11VideoContext_NegotiateCryptoSessionKeyExchange_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_NegotiateCryptoSessionKeyExchange: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -6399,6 +6671,8 @@ npt_dispatch_ID3D11VideoContext_NegotiateCryptoSessionKeyExchange(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_NegotiateCryptoSessionKeyExchange on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6417,6 +6691,8 @@ npt_dispatch_ID3D11VideoContext_NegotiateCryptoSessionKeyExchange(struct npt_dis
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_NegotiateCryptoSessionKeyExchange: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6541,8 +6817,10 @@ npt_dispatch_ID3D11VideoContext_EncryptionBlt(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11VideoContext_EncryptionBlt_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_EncryptionBlt: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -6564,6 +6842,8 @@ npt_dispatch_ID3D11VideoContext_EncryptionBlt(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_EncryptionBlt on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6582,6 +6862,8 @@ npt_dispatch_ID3D11VideoContext_EncryptionBlt(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_EncryptionBlt: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6734,8 +7016,10 @@ npt_dispatch_ID3D11VideoContext_DecryptionBlt(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11VideoContext_DecryptionBlt_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_DecryptionBlt: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -6757,6 +7041,8 @@ npt_dispatch_ID3D11VideoContext_DecryptionBlt(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecryptionBlt on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6775,6 +7061,8 @@ npt_dispatch_ID3D11VideoContext_DecryptionBlt(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_DecryptionBlt: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6875,8 +7163,10 @@ npt_dispatch_ID3D11VideoContext_StartSessionKeyRefresh(struct npt_dispatch_conte
 
     npt_decode_ID3D11VideoContext_StartSessionKeyRefresh_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_StartSessionKeyRefresh: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -6898,6 +7188,8 @@ npt_dispatch_ID3D11VideoContext_StartSessionKeyRefresh(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_StartSessionKeyRefresh on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6916,6 +7208,8 @@ npt_dispatch_ID3D11VideoContext_StartSessionKeyRefresh(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_StartSessionKeyRefresh: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6998,8 +7292,10 @@ npt_dispatch_ID3D11VideoContext_FinishSessionKeyRefresh(struct npt_dispatch_cont
 
     npt_decode_ID3D11VideoContext_FinishSessionKeyRefresh_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_FinishSessionKeyRefresh: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7021,6 +7317,8 @@ npt_dispatch_ID3D11VideoContext_FinishSessionKeyRefresh(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_FinishSessionKeyRefresh on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7039,6 +7337,8 @@ npt_dispatch_ID3D11VideoContext_FinishSessionKeyRefresh(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_FinishSessionKeyRefresh: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7140,8 +7440,10 @@ npt_dispatch_ID3D11VideoContext_GetEncryptionBltKey(struct npt_dispatch_context 
 
     npt_decode_ID3D11VideoContext_GetEncryptionBltKey_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_GetEncryptionBltKey: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7163,6 +7465,8 @@ npt_dispatch_ID3D11VideoContext_GetEncryptionBltKey(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_GetEncryptionBltKey on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7181,6 +7485,8 @@ npt_dispatch_ID3D11VideoContext_GetEncryptionBltKey(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_GetEncryptionBltKey: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7291,8 +7597,10 @@ npt_dispatch_ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange(struct 
 
     npt_decode_ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7314,6 +7622,8 @@ npt_dispatch_ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange(struct 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7332,6 +7642,8 @@ npt_dispatch_ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange(struct 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_NegotiateAuthenticatedChannelKeyExchange: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7454,8 +7766,10 @@ npt_dispatch_ID3D11VideoContext_QueryAuthenticatedChannel(struct npt_dispatch_co
 
     npt_decode_ID3D11VideoContext_QueryAuthenticatedChannel_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_QueryAuthenticatedChannel: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7477,6 +7791,8 @@ npt_dispatch_ID3D11VideoContext_QueryAuthenticatedChannel(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_QueryAuthenticatedChannel on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7495,6 +7811,8 @@ npt_dispatch_ID3D11VideoContext_QueryAuthenticatedChannel(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_QueryAuthenticatedChannel: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7608,8 +7926,10 @@ npt_dispatch_ID3D11VideoContext_ConfigureAuthenticatedChannel(struct npt_dispatc
 
     npt_decode_ID3D11VideoContext_ConfigureAuthenticatedChannel_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_ConfigureAuthenticatedChannel: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7631,6 +7951,8 @@ npt_dispatch_ID3D11VideoContext_ConfigureAuthenticatedChannel(struct npt_dispatc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_ConfigureAuthenticatedChannel on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7649,6 +7971,8 @@ npt_dispatch_ID3D11VideoContext_ConfigureAuthenticatedChannel(struct npt_dispatc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_ConfigureAuthenticatedChannel: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7740,8 +8064,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamRotation(struct npt_dispa
 
     npt_decode_ID3D11VideoContext_VideoProcessorSetStreamRotation_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamRotation: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7763,6 +8089,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamRotation(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamRotation on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7781,6 +8109,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorSetStreamRotation(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorSetStreamRotation: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7880,8 +8210,10 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamRotation(struct npt_dispa
 
     npt_decode_ID3D11VideoContext_VideoProcessorGetStreamRotation_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamRotation: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT);
@@ -7903,6 +8235,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamRotation(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamRotation on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7921,6 +8255,8 @@ npt_dispatch_ID3D11VideoContext_VideoProcessorGetStreamRotation(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext_VideoProcessorGetStreamRotation: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8026,8 +8362,10 @@ npt_dispatch_ID3D11VideoContext1_SubmitDecoderBuffers1(struct npt_dispatch_conte
 
     npt_decode_ID3D11VideoContext1_SubmitDecoderBuffers1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_SubmitDecoderBuffers1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8049,6 +8387,8 @@ npt_dispatch_ID3D11VideoContext1_SubmitDecoderBuffers1(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_SubmitDecoderBuffers1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8067,6 +8407,8 @@ npt_dispatch_ID3D11VideoContext1_SubmitDecoderBuffers1(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_SubmitDecoderBuffers1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8178,8 +8520,10 @@ npt_dispatch_ID3D11VideoContext1_GetDataForNewHardwareKey(struct npt_dispatch_co
 
     npt_decode_ID3D11VideoContext1_GetDataForNewHardwareKey_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_GetDataForNewHardwareKey: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8201,6 +8545,8 @@ npt_dispatch_ID3D11VideoContext1_GetDataForNewHardwareKey(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_GetDataForNewHardwareKey on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8219,6 +8565,8 @@ npt_dispatch_ID3D11VideoContext1_GetDataForNewHardwareKey(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_GetDataForNewHardwareKey: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8309,8 +8657,10 @@ npt_dispatch_ID3D11VideoContext1_CheckCryptoSessionStatus(struct npt_dispatch_co
 
     npt_decode_ID3D11VideoContext1_CheckCryptoSessionStatus_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_CheckCryptoSessionStatus: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8332,6 +8682,8 @@ npt_dispatch_ID3D11VideoContext1_CheckCryptoSessionStatus(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_CheckCryptoSessionStatus on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8350,6 +8702,8 @@ npt_dispatch_ID3D11VideoContext1_CheckCryptoSessionStatus(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_CheckCryptoSessionStatus: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8450,8 +8804,10 @@ npt_dispatch_ID3D11VideoContext1_DecoderEnableDownsampling(struct npt_dispatch_c
 
     npt_decode_ID3D11VideoContext1_DecoderEnableDownsampling_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_DecoderEnableDownsampling: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8473,6 +8829,8 @@ npt_dispatch_ID3D11VideoContext1_DecoderEnableDownsampling(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_DecoderEnableDownsampling on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8491,6 +8849,8 @@ npt_dispatch_ID3D11VideoContext1_DecoderEnableDownsampling(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_DecoderEnableDownsampling: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8585,8 +8945,10 @@ npt_dispatch_ID3D11VideoContext1_DecoderUpdateDownsampling(struct npt_dispatch_c
 
     npt_decode_ID3D11VideoContext1_DecoderUpdateDownsampling_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_DecoderUpdateDownsampling: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8608,6 +8970,8 @@ npt_dispatch_ID3D11VideoContext1_DecoderUpdateDownsampling(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_DecoderUpdateDownsampling on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8626,6 +8990,8 @@ npt_dispatch_ID3D11VideoContext1_DecoderUpdateDownsampling(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_DecoderUpdateDownsampling: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8711,8 +9077,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1(struct npt_d
 
     npt_decode_ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8734,6 +9102,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8752,6 +9122,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetOutputColorSpace1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8837,8 +9209,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage(struct npt_d
 
     npt_decode_ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8860,6 +9234,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8878,6 +9254,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetOutputShaderUsage: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8967,8 +9345,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1(struct npt_d
 
     npt_decode_ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -8990,6 +9370,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9008,6 +9390,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetOutputColorSpace1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9097,8 +9481,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage(struct npt_d
 
     npt_decode_ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -9120,6 +9506,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9138,6 +9526,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetOutputShaderUsage: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9226,8 +9616,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1(struct npt_d
 
     npt_decode_ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -9249,6 +9641,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9267,6 +9661,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetStreamColorSpace1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9361,8 +9757,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetStreamMirror(struct npt_dispat
 
     npt_decode_ID3D11VideoContext1_VideoProcessorSetStreamMirror_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorSetStreamMirror: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -9384,6 +9782,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetStreamMirror(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetStreamMirror on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9402,6 +9802,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorSetStreamMirror(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorSetStreamMirror: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9494,8 +9896,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1(struct npt_d
 
     npt_decode_ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -9517,6 +9921,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9535,6 +9941,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetStreamColorSpace1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9641,8 +10049,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetStreamMirror(struct npt_dispat
 
     npt_decode_ID3D11VideoContext1_VideoProcessorGetStreamMirror_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorGetStreamMirror: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -9664,6 +10074,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetStreamMirror(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetStreamMirror on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9682,6 +10094,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetStreamMirror(struct npt_dispat
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetStreamMirror: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9803,8 +10217,10 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetBehaviorHints(struct npt_dispa
 
     npt_decode_ID3D11VideoContext1_VideoProcessorGetBehaviorHints_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext1_VideoProcessorGetBehaviorHints: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT1);
@@ -9826,6 +10242,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetBehaviorHints(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetBehaviorHints on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9844,6 +10262,8 @@ npt_dispatch_ID3D11VideoContext1_VideoProcessorGetBehaviorHints(struct npt_dispa
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext1_VideoProcessorGetBehaviorHints: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9949,8 +10369,10 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData(struct npt_d
 
     npt_decode_ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT2);
@@ -9972,6 +10394,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9990,6 +10414,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorSetOutputHDRMetaData: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10097,8 +10523,10 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData(struct npt_d
 
     npt_decode_ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT2);
@@ -10120,6 +10548,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10138,6 +10568,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorGetOutputHDRMetaData: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10246,8 +10678,10 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData(struct npt_d
 
     npt_decode_ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT2);
@@ -10269,6 +10703,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10287,6 +10723,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorSetStreamHDRMetaData: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10397,8 +10835,10 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData(struct npt_d
 
     npt_decode_ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT2);
@@ -10420,6 +10860,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10438,6 +10880,8 @@ npt_dispatch_ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10593,8 +11037,10 @@ npt_dispatch_ID3D11VideoContext3_DecoderBeginFrame1(struct npt_dispatch_context 
 
     npt_decode_ID3D11VideoContext3_DecoderBeginFrame1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext3_DecoderBeginFrame1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT3);
@@ -10616,6 +11062,8 @@ npt_dispatch_ID3D11VideoContext3_DecoderBeginFrame1(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext3_DecoderBeginFrame1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10634,6 +11082,8 @@ npt_dispatch_ID3D11VideoContext3_DecoderBeginFrame1(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext3_DecoderBeginFrame1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10739,8 +11189,10 @@ npt_dispatch_ID3D11VideoContext3_SubmitDecoderBuffers2(struct npt_dispatch_conte
 
     npt_decode_ID3D11VideoContext3_SubmitDecoderBuffers2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoContext3_SubmitDecoderBuffers2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEOCONTEXT3);
@@ -10762,6 +11214,8 @@ npt_dispatch_ID3D11VideoContext3_SubmitDecoderBuffers2(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext3_SubmitDecoderBuffers2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10780,6 +11234,8 @@ npt_dispatch_ID3D11VideoContext3_SubmitDecoderBuffers2(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoContext3_SubmitDecoderBuffers2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

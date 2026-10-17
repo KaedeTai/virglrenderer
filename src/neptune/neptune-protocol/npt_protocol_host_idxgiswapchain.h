@@ -67,8 +67,10 @@ npt_dispatch_IDXGISwapChain_Present(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_Present_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_Present: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -90,6 +92,8 @@ npt_dispatch_IDXGISwapChain_Present(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_Present on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -108,6 +112,8 @@ npt_dispatch_IDXGISwapChain_Present(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_Present: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -218,8 +224,10 @@ npt_dispatch_IDXGISwapChain_GetBuffer(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_GetBuffer_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_GetBuffer: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -241,6 +249,8 @@ npt_dispatch_IDXGISwapChain_GetBuffer(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetBuffer on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -259,6 +269,8 @@ npt_dispatch_IDXGISwapChain_GetBuffer(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetBuffer: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -348,8 +360,10 @@ npt_dispatch_IDXGISwapChain_SetFullscreenState(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_SetFullscreenState_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_SetFullscreenState: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -371,6 +385,8 @@ npt_dispatch_IDXGISwapChain_SetFullscreenState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_SetFullscreenState on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -389,6 +405,8 @@ npt_dispatch_IDXGISwapChain_SetFullscreenState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_SetFullscreenState: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -492,8 +510,10 @@ npt_dispatch_IDXGISwapChain_GetFullscreenState(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_GetFullscreenState_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_GetFullscreenState: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -515,6 +535,8 @@ npt_dispatch_IDXGISwapChain_GetFullscreenState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetFullscreenState on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -533,6 +555,8 @@ npt_dispatch_IDXGISwapChain_GetFullscreenState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetFullscreenState: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -619,8 +643,10 @@ npt_dispatch_IDXGISwapChain_GetDesc(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_GetDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_GetDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -642,6 +668,8 @@ npt_dispatch_IDXGISwapChain_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -660,6 +688,8 @@ npt_dispatch_IDXGISwapChain_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -750,8 +780,10 @@ npt_dispatch_IDXGISwapChain_ResizeBuffers(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_ResizeBuffers_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_ResizeBuffers: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -773,6 +805,8 @@ npt_dispatch_IDXGISwapChain_ResizeBuffers(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_ResizeBuffers on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -791,6 +825,8 @@ npt_dispatch_IDXGISwapChain_ResizeBuffers(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_ResizeBuffers: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -877,8 +913,10 @@ npt_dispatch_IDXGISwapChain_ResizeTarget(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_ResizeTarget_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_ResizeTarget: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -900,6 +938,8 @@ npt_dispatch_IDXGISwapChain_ResizeTarget(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_ResizeTarget on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -918,6 +958,8 @@ npt_dispatch_IDXGISwapChain_ResizeTarget(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_ResizeTarget: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1014,8 +1056,10 @@ npt_dispatch_IDXGISwapChain_GetContainingOutput(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGISwapChain_GetContainingOutput_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_GetContainingOutput: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -1037,6 +1081,8 @@ npt_dispatch_IDXGISwapChain_GetContainingOutput(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetContainingOutput on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1055,6 +1101,8 @@ npt_dispatch_IDXGISwapChain_GetContainingOutput(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetContainingOutput: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1139,8 +1187,10 @@ npt_dispatch_IDXGISwapChain_GetFrameStatistics(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain_GetFrameStatistics_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_GetFrameStatistics: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -1162,6 +1212,8 @@ npt_dispatch_IDXGISwapChain_GetFrameStatistics(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetFrameStatistics on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1180,6 +1232,8 @@ npt_dispatch_IDXGISwapChain_GetFrameStatistics(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetFrameStatistics: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1262,8 +1316,10 @@ npt_dispatch_IDXGISwapChain_GetLastPresentCount(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGISwapChain_GetLastPresentCount_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain_GetLastPresentCount: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN);
@@ -1285,6 +1341,8 @@ npt_dispatch_IDXGISwapChain_GetLastPresentCount(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetLastPresentCount on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1303,6 +1361,8 @@ npt_dispatch_IDXGISwapChain_GetLastPresentCount(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain_GetLastPresentCount: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1385,8 +1445,10 @@ npt_dispatch_IDXGISwapChain1_GetDesc1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_GetDesc1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetDesc1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -1408,6 +1470,8 @@ npt_dispatch_IDXGISwapChain1_GetDesc1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetDesc1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1426,6 +1490,8 @@ npt_dispatch_IDXGISwapChain1_GetDesc1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetDesc1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1508,8 +1574,10 @@ npt_dispatch_IDXGISwapChain1_GetFullscreenDesc(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_GetFullscreenDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetFullscreenDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -1531,6 +1599,8 @@ npt_dispatch_IDXGISwapChain1_GetFullscreenDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetFullscreenDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1549,6 +1619,8 @@ npt_dispatch_IDXGISwapChain1_GetFullscreenDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetFullscreenDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1630,8 +1702,10 @@ npt_dispatch_IDXGISwapChain1_GetHwnd(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_GetHwnd_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetHwnd: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -1653,6 +1727,8 @@ npt_dispatch_IDXGISwapChain1_GetHwnd(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetHwnd on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1671,6 +1747,8 @@ npt_dispatch_IDXGISwapChain1_GetHwnd(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetHwnd: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1778,8 +1856,10 @@ npt_dispatch_IDXGISwapChain1_GetCoreWindow(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_GetCoreWindow_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetCoreWindow: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -1801,6 +1881,8 @@ npt_dispatch_IDXGISwapChain1_GetCoreWindow(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetCoreWindow on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1819,6 +1901,8 @@ npt_dispatch_IDXGISwapChain1_GetCoreWindow(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetCoreWindow: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1914,8 +1998,10 @@ npt_dispatch_IDXGISwapChain1_Present1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_Present1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_Present1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -1937,6 +2023,8 @@ npt_dispatch_IDXGISwapChain1_Present1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_Present1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1955,6 +2043,8 @@ npt_dispatch_IDXGISwapChain1_Present1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_Present1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2031,8 +2121,10 @@ npt_dispatch_IDXGISwapChain1_IsTemporaryMonoSupported(struct npt_dispatch_contex
 
     npt_decode_IDXGISwapChain1_IsTemporaryMonoSupported_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_IsTemporaryMonoSupported: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -2054,6 +2146,8 @@ npt_dispatch_IDXGISwapChain1_IsTemporaryMonoSupported(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_IsTemporaryMonoSupported on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2072,6 +2166,8 @@ npt_dispatch_IDXGISwapChain1_IsTemporaryMonoSupported(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_IsTemporaryMonoSupported: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2168,8 +2264,10 @@ npt_dispatch_IDXGISwapChain1_GetRestrictToOutput(struct npt_dispatch_context *ct
 
     npt_decode_IDXGISwapChain1_GetRestrictToOutput_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetRestrictToOutput: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -2191,6 +2289,8 @@ npt_dispatch_IDXGISwapChain1_GetRestrictToOutput(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetRestrictToOutput on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2209,6 +2309,8 @@ npt_dispatch_IDXGISwapChain1_GetRestrictToOutput(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetRestrictToOutput: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2297,8 +2399,10 @@ npt_dispatch_IDXGISwapChain1_SetBackgroundColor(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGISwapChain1_SetBackgroundColor_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_SetBackgroundColor: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -2320,6 +2424,8 @@ npt_dispatch_IDXGISwapChain1_SetBackgroundColor(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_SetBackgroundColor on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2338,6 +2444,8 @@ npt_dispatch_IDXGISwapChain1_SetBackgroundColor(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_SetBackgroundColor: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2420,8 +2528,10 @@ npt_dispatch_IDXGISwapChain1_GetBackgroundColor(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGISwapChain1_GetBackgroundColor_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetBackgroundColor: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -2443,6 +2553,8 @@ npt_dispatch_IDXGISwapChain1_GetBackgroundColor(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetBackgroundColor on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2461,6 +2573,8 @@ npt_dispatch_IDXGISwapChain1_GetBackgroundColor(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetBackgroundColor: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2539,8 +2653,10 @@ npt_dispatch_IDXGISwapChain1_SetRotation(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_SetRotation_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_SetRotation: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -2562,6 +2678,8 @@ npt_dispatch_IDXGISwapChain1_SetRotation(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_SetRotation on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2580,6 +2698,8 @@ npt_dispatch_IDXGISwapChain1_SetRotation(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_SetRotation: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2662,8 +2782,10 @@ npt_dispatch_IDXGISwapChain1_GetRotation(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain1_GetRotation_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain1_GetRotation: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN1);
@@ -2685,6 +2807,8 @@ npt_dispatch_IDXGISwapChain1_GetRotation(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetRotation on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2703,6 +2827,8 @@ npt_dispatch_IDXGISwapChain1_GetRotation(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain1_GetRotation: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2784,8 +2910,10 @@ npt_dispatch_IDXGISwapChain2_SetSourceSize(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain2_SetSourceSize_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_SetSourceSize: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -2807,6 +2935,8 @@ npt_dispatch_IDXGISwapChain2_SetSourceSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_SetSourceSize on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2825,6 +2955,8 @@ npt_dispatch_IDXGISwapChain2_SetSourceSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_SetSourceSize: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2914,8 +3046,10 @@ npt_dispatch_IDXGISwapChain2_GetSourceSize(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain2_GetSourceSize_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_GetSourceSize: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -2937,6 +3071,8 @@ npt_dispatch_IDXGISwapChain2_GetSourceSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetSourceSize on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2955,6 +3091,8 @@ npt_dispatch_IDXGISwapChain2_GetSourceSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetSourceSize: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3033,8 +3171,10 @@ npt_dispatch_IDXGISwapChain2_SetMaximumFrameLatency(struct npt_dispatch_context 
 
     npt_decode_IDXGISwapChain2_SetMaximumFrameLatency_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_SetMaximumFrameLatency: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -3056,6 +3196,8 @@ npt_dispatch_IDXGISwapChain2_SetMaximumFrameLatency(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_SetMaximumFrameLatency on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3074,6 +3216,8 @@ npt_dispatch_IDXGISwapChain2_SetMaximumFrameLatency(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_SetMaximumFrameLatency: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3156,8 +3300,10 @@ npt_dispatch_IDXGISwapChain2_GetMaximumFrameLatency(struct npt_dispatch_context 
 
     npt_decode_IDXGISwapChain2_GetMaximumFrameLatency_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_GetMaximumFrameLatency: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -3179,6 +3325,8 @@ npt_dispatch_IDXGISwapChain2_GetMaximumFrameLatency(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetMaximumFrameLatency on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3197,6 +3345,8 @@ npt_dispatch_IDXGISwapChain2_GetMaximumFrameLatency(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetMaximumFrameLatency: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3274,8 +3424,10 @@ npt_dispatch_IDXGISwapChain2_GetFrameLatencyWaitableObject(struct npt_dispatch_c
 
     npt_decode_IDXGISwapChain2_GetFrameLatencyWaitableObject_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_GetFrameLatencyWaitableObject: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -3297,6 +3449,8 @@ npt_dispatch_IDXGISwapChain2_GetFrameLatencyWaitableObject(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetFrameLatencyWaitableObject on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3315,6 +3469,8 @@ npt_dispatch_IDXGISwapChain2_GetFrameLatencyWaitableObject(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetFrameLatencyWaitableObject: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3401,8 +3557,10 @@ npt_dispatch_IDXGISwapChain2_SetMatrixTransform(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGISwapChain2_SetMatrixTransform_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_SetMatrixTransform: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -3424,6 +3582,8 @@ npt_dispatch_IDXGISwapChain2_SetMatrixTransform(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_SetMatrixTransform on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3442,6 +3602,8 @@ npt_dispatch_IDXGISwapChain2_SetMatrixTransform(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_SetMatrixTransform: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3524,8 +3686,10 @@ npt_dispatch_IDXGISwapChain2_GetMatrixTransform(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGISwapChain2_GetMatrixTransform_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain2_GetMatrixTransform: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN2);
@@ -3547,6 +3711,8 @@ npt_dispatch_IDXGISwapChain2_GetMatrixTransform(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetMatrixTransform on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3565,6 +3731,8 @@ npt_dispatch_IDXGISwapChain2_GetMatrixTransform(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain2_GetMatrixTransform: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3641,8 +3809,10 @@ npt_dispatch_IDXGISwapChain3_GetCurrentBackBufferIndex(struct npt_dispatch_conte
 
     npt_decode_IDXGISwapChain3_GetCurrentBackBufferIndex_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain3_GetCurrentBackBufferIndex: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN3);
@@ -3664,6 +3834,8 @@ npt_dispatch_IDXGISwapChain3_GetCurrentBackBufferIndex(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_GetCurrentBackBufferIndex on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3682,6 +3854,8 @@ npt_dispatch_IDXGISwapChain3_GetCurrentBackBufferIndex(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_GetCurrentBackBufferIndex: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3767,8 +3941,10 @@ npt_dispatch_IDXGISwapChain3_CheckColorSpaceSupport(struct npt_dispatch_context 
 
     npt_decode_IDXGISwapChain3_CheckColorSpaceSupport_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain3_CheckColorSpaceSupport: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN3);
@@ -3790,6 +3966,8 @@ npt_dispatch_IDXGISwapChain3_CheckColorSpaceSupport(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_CheckColorSpaceSupport on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3808,6 +3986,8 @@ npt_dispatch_IDXGISwapChain3_CheckColorSpaceSupport(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_CheckColorSpaceSupport: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3886,8 +4066,10 @@ npt_dispatch_IDXGISwapChain3_SetColorSpace1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain3_SetColorSpace1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain3_SetColorSpace1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN3);
@@ -3909,6 +4091,8 @@ npt_dispatch_IDXGISwapChain3_SetColorSpace1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_SetColorSpace1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3927,6 +4111,8 @@ npt_dispatch_IDXGISwapChain3_SetColorSpace1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_SetColorSpace1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4061,8 +4247,10 @@ npt_dispatch_IDXGISwapChain3_ResizeBuffers1(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain3_ResizeBuffers1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain3_ResizeBuffers1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN3);
@@ -4084,6 +4272,8 @@ npt_dispatch_IDXGISwapChain3_ResizeBuffers1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_ResizeBuffers1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4102,6 +4292,8 @@ npt_dispatch_IDXGISwapChain3_ResizeBuffers1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain3_ResizeBuffers1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4200,8 +4392,10 @@ npt_dispatch_IDXGISwapChain4_SetHDRMetaData(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGISwapChain4_SetHDRMetaData_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGISwapChain4_SetHDRMetaData: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGISWAPCHAIN4);
@@ -4223,6 +4417,8 @@ npt_dispatch_IDXGISwapChain4_SetHDRMetaData(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain4_SetHDRMetaData on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4241,6 +4437,8 @@ npt_dispatch_IDXGISwapChain4_SetHDRMetaData(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGISwapChain4_SetHDRMetaData: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

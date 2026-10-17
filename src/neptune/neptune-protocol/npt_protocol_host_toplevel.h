@@ -85,8 +85,10 @@ npt_dispatch_CreateDXGIFactory(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_CreateDXGIFactory_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("CreateDXGIFactory: malformed arguments");
         return;
+    }
 
     npt_replace_CreateDXGIFactory_args_handle(ctx, &args);
 
@@ -102,6 +104,8 @@ npt_dispatch_CreateDXGIFactory(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("CreateDXGIFactory: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -203,8 +207,10 @@ npt_dispatch_CreateDXGIFactory1(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_CreateDXGIFactory1_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("CreateDXGIFactory1: malformed arguments");
         return;
+    }
 
     npt_replace_CreateDXGIFactory1_args_handle(ctx, &args);
 
@@ -220,6 +226,8 @@ npt_dispatch_CreateDXGIFactory1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("CreateDXGIFactory1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -324,8 +332,10 @@ npt_dispatch_CreateDXGIFactory2(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_CreateDXGIFactory2_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("CreateDXGIFactory2: malformed arguments");
         return;
+    }
 
     npt_replace_CreateDXGIFactory2_args_handle(ctx, &args);
 
@@ -341,6 +351,8 @@ npt_dispatch_CreateDXGIFactory2(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("CreateDXGIFactory2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -415,8 +427,10 @@ npt_dispatch_DXGIDeclareAdapterRemovalSupport(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_DXGIDeclareAdapterRemovalSupport_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("DXGIDeclareAdapterRemovalSupport: malformed arguments");
         return;
+    }
 
     npt_replace_DXGIDeclareAdapterRemovalSupport_args_handle(ctx, &args);
 
@@ -432,6 +446,8 @@ npt_dispatch_DXGIDeclareAdapterRemovalSupport(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("DXGIDeclareAdapterRemovalSupport: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -586,8 +602,10 @@ npt_dispatch_D3D11CreateDevice(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D11CreateDevice_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D11CreateDevice: malformed arguments");
         return;
+    }
 
     npt_replace_D3D11CreateDevice_args_handle(ctx, &args);
 
@@ -604,6 +622,8 @@ npt_dispatch_D3D11CreateDevice(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D11CreateDevice: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -794,8 +814,10 @@ npt_dispatch_D3D11CreateDeviceAndSwapChain(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D11CreateDeviceAndSwapChain_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D11CreateDeviceAndSwapChain: malformed arguments");
         return;
+    }
 
     npt_replace_D3D11CreateDeviceAndSwapChain_args_handle(ctx, &args);
 
@@ -813,6 +835,8 @@ npt_dispatch_D3D11CreateDeviceAndSwapChain(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D11CreateDeviceAndSwapChain: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -996,8 +1020,10 @@ npt_dispatch_D3D11On12CreateDevice(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D11On12CreateDevice_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D11On12CreateDevice: malformed arguments");
         return;
+    }
 
     npt_replace_D3D11On12CreateDevice_args_handle(ctx, &args);
 
@@ -1014,6 +1040,8 @@ npt_dispatch_D3D11On12CreateDevice(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D11On12CreateDevice: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1129,8 +1157,10 @@ npt_dispatch_D3D12CreateDevice(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D12CreateDevice_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D12CreateDevice: malformed arguments");
         return;
+    }
 
     npt_replace_D3D12CreateDevice_args_handle(ctx, &args);
 
@@ -1146,6 +1176,8 @@ npt_dispatch_D3D12CreateDevice(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D12CreateDevice: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1258,8 +1290,10 @@ npt_dispatch_D3D12CreateRootSignatureDeserializer(struct npt_dispatch_context *c
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D12CreateRootSignatureDeserializer_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D12CreateRootSignatureDeserializer: malformed arguments");
         return;
+    }
 
     npt_replace_D3D12CreateRootSignatureDeserializer_args_handle(ctx, &args);
 
@@ -1275,6 +1309,8 @@ npt_dispatch_D3D12CreateRootSignatureDeserializer(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D12CreateRootSignatureDeserializer: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1382,8 +1418,10 @@ npt_dispatch_D3D12CreateVersionedRootSignatureDeserializer(struct npt_dispatch_c
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D12CreateVersionedRootSignatureDeserializer_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D12CreateVersionedRootSignatureDeserializer: malformed arguments");
         return;
+    }
 
     npt_replace_D3D12CreateVersionedRootSignatureDeserializer_args_handle(ctx, &args);
 
@@ -1399,6 +1437,8 @@ npt_dispatch_D3D12CreateVersionedRootSignatureDeserializer(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D12CreateVersionedRootSignatureDeserializer: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1537,8 +1577,10 @@ npt_dispatch_D3D12SerializeRootSignature(struct npt_dispatch_context *ctx,
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D12SerializeRootSignature_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D12SerializeRootSignature: malformed arguments");
         return;
+    }
 
     npt_replace_D3D12SerializeRootSignature_args_handle(ctx, &args);
 
@@ -1554,6 +1596,8 @@ npt_dispatch_D3D12SerializeRootSignature(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D12SerializeRootSignature: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1689,8 +1733,10 @@ npt_dispatch_D3D12SerializeVersionedRootSignature(struct npt_dispatch_context *c
     memset(&args, 0, sizeof(args));
 
     npt_decode_D3D12SerializeVersionedRootSignature_args_temp(ctx->decoder, &args);
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("D3D12SerializeVersionedRootSignature: malformed arguments");
         return;
+    }
 
     npt_replace_D3D12SerializeVersionedRootSignature_args_handle(ctx, &args);
 
@@ -1706,6 +1752,8 @@ npt_dispatch_D3D12SerializeVersionedRootSignature(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("D3D12SerializeVersionedRootSignature: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

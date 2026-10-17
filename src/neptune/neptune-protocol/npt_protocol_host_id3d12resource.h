@@ -80,8 +80,10 @@ npt_dispatch_ID3D12Resource_Map(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Resource_Map_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_Map: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -103,6 +105,8 @@ npt_dispatch_ID3D12Resource_Map(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_Map on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -121,6 +125,8 @@ npt_dispatch_ID3D12Resource_Map(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_Map: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -207,8 +213,10 @@ npt_dispatch_ID3D12Resource_Unmap(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Resource_Unmap_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_Unmap: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -230,6 +238,8 @@ npt_dispatch_ID3D12Resource_Unmap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_Unmap on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -248,6 +258,8 @@ npt_dispatch_ID3D12Resource_Unmap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_Unmap: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -325,8 +337,10 @@ npt_dispatch_ID3D12Resource_GetDesc(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Resource_GetDesc_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_GetDesc: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -348,6 +362,8 @@ npt_dispatch_ID3D12Resource_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_GetDesc on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -366,6 +382,8 @@ npt_dispatch_ID3D12Resource_GetDesc(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_GetDesc: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -445,8 +463,10 @@ npt_dispatch_ID3D12Resource_GetGPUVirtualAddress(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Resource_GetGPUVirtualAddress_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_GetGPUVirtualAddress: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -468,6 +488,8 @@ npt_dispatch_ID3D12Resource_GetGPUVirtualAddress(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_GetGPUVirtualAddress on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -486,6 +508,8 @@ npt_dispatch_ID3D12Resource_GetGPUVirtualAddress(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_GetGPUVirtualAddress: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -583,8 +607,10 @@ npt_dispatch_ID3D12Resource_WriteToSubresource(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Resource_WriteToSubresource_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_WriteToSubresource: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -606,6 +632,8 @@ npt_dispatch_ID3D12Resource_WriteToSubresource(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_WriteToSubresource on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -624,6 +652,8 @@ npt_dispatch_ID3D12Resource_WriteToSubresource(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_WriteToSubresource: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -724,8 +754,10 @@ npt_dispatch_ID3D12Resource_ReadFromSubresource(struct npt_dispatch_context *ctx
 
     npt_decode_ID3D12Resource_ReadFromSubresource_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_ReadFromSubresource: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -747,6 +779,8 @@ npt_dispatch_ID3D12Resource_ReadFromSubresource(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_ReadFromSubresource on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -765,6 +799,8 @@ npt_dispatch_ID3D12Resource_ReadFromSubresource(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_ReadFromSubresource: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -854,8 +890,10 @@ npt_dispatch_ID3D12Resource_GetHeapProperties(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Resource_GetHeapProperties_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource_GetHeapProperties: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE);
@@ -877,6 +915,8 @@ npt_dispatch_ID3D12Resource_GetHeapProperties(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_GetHeapProperties on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -895,6 +935,8 @@ npt_dispatch_ID3D12Resource_GetHeapProperties(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource_GetHeapProperties: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1002,8 +1044,10 @@ npt_dispatch_ID3D12Resource1_GetProtectedResourceSession(struct npt_dispatch_con
 
     npt_decode_ID3D12Resource1_GetProtectedResourceSession_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource1_GetProtectedResourceSession: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE1);
@@ -1025,6 +1069,8 @@ npt_dispatch_ID3D12Resource1_GetProtectedResourceSession(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource1_GetProtectedResourceSession on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1043,6 +1089,8 @@ npt_dispatch_ID3D12Resource1_GetProtectedResourceSession(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource1_GetProtectedResourceSession: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1123,8 +1171,10 @@ npt_dispatch_ID3D12Resource2_GetDesc1(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Resource2_GetDesc1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Resource2_GetDesc1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12RESOURCE2);
@@ -1146,6 +1196,8 @@ npt_dispatch_ID3D12Resource2_GetDesc1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource2_GetDesc1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1164,6 +1216,8 @@ npt_dispatch_ID3D12Resource2_GetDesc1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Resource2_GetDesc1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

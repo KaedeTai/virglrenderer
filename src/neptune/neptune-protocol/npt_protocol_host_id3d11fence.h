@@ -85,8 +85,10 @@ npt_dispatch_ID3D11Fence_CreateSharedHandle(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11Fence_CreateSharedHandle_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Fence_CreateSharedHandle: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11FENCE);
@@ -108,6 +110,8 @@ npt_dispatch_ID3D11Fence_CreateSharedHandle(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Fence_CreateSharedHandle on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -126,6 +130,8 @@ npt_dispatch_ID3D11Fence_CreateSharedHandle(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Fence_CreateSharedHandle: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -203,8 +209,10 @@ npt_dispatch_ID3D11Fence_GetCompletedValue(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11Fence_GetCompletedValue_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Fence_GetCompletedValue: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11FENCE);
@@ -226,6 +234,8 @@ npt_dispatch_ID3D11Fence_GetCompletedValue(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Fence_GetCompletedValue on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -244,6 +254,8 @@ npt_dispatch_ID3D11Fence_GetCompletedValue(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Fence_GetCompletedValue: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -330,8 +342,10 @@ npt_dispatch_ID3D11Fence_SetEventOnCompletion(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11Fence_SetEventOnCompletion_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Fence_SetEventOnCompletion: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11FENCE);
@@ -353,6 +367,8 @@ npt_dispatch_ID3D11Fence_SetEventOnCompletion(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Fence_SetEventOnCompletion on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -371,6 +387,8 @@ npt_dispatch_ID3D11Fence_SetEventOnCompletion(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Fence_SetEventOnCompletion: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

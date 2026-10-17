@@ -61,8 +61,10 @@ npt_dispatch_ID3D11Multithread_Enter(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11Multithread_Enter_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Multithread_Enter: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11MULTITHREAD);
@@ -84,6 +86,8 @@ npt_dispatch_ID3D11Multithread_Enter(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_Enter on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -102,6 +106,8 @@ npt_dispatch_ID3D11Multithread_Enter(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_Enter: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -177,8 +183,10 @@ npt_dispatch_ID3D11Multithread_Leave(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D11Multithread_Leave_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Multithread_Leave: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11MULTITHREAD);
@@ -200,6 +208,8 @@ npt_dispatch_ID3D11Multithread_Leave(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_Leave on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -218,6 +228,8 @@ npt_dispatch_ID3D11Multithread_Leave(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_Leave: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -296,8 +308,10 @@ npt_dispatch_ID3D11Multithread_SetMultithreadProtected(struct npt_dispatch_conte
 
     npt_decode_ID3D11Multithread_SetMultithreadProtected_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Multithread_SetMultithreadProtected: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11MULTITHREAD);
@@ -319,6 +333,8 @@ npt_dispatch_ID3D11Multithread_SetMultithreadProtected(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_SetMultithreadProtected on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -337,6 +353,8 @@ npt_dispatch_ID3D11Multithread_SetMultithreadProtected(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_SetMultithreadProtected: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -413,8 +431,10 @@ npt_dispatch_ID3D11Multithread_GetMultithreadProtected(struct npt_dispatch_conte
 
     npt_decode_ID3D11Multithread_GetMultithreadProtected_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11Multithread_GetMultithreadProtected: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11MULTITHREAD);
@@ -436,6 +456,8 @@ npt_dispatch_ID3D11Multithread_GetMultithreadProtected(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_GetMultithreadProtected on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -454,6 +476,8 @@ npt_dispatch_ID3D11Multithread_GetMultithreadProtected(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11Multithread_GetMultithreadProtected: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

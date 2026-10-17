@@ -70,8 +70,10 @@ npt_dispatch_IDXGIDecodeSwapChain_PresentBuffer(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_PresentBuffer_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_PresentBuffer: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -93,6 +95,8 @@ npt_dispatch_IDXGIDecodeSwapChain_PresentBuffer(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_PresentBuffer on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -111,6 +115,8 @@ npt_dispatch_IDXGIDecodeSwapChain_PresentBuffer(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_PresentBuffer: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -197,8 +203,10 @@ npt_dispatch_IDXGIDecodeSwapChain_SetSourceRect(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_SetSourceRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_SetSourceRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -220,6 +228,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetSourceRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetSourceRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -238,6 +248,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetSourceRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetSourceRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -324,8 +336,10 @@ npt_dispatch_IDXGIDecodeSwapChain_SetTargetRect(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_SetTargetRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_SetTargetRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -347,6 +361,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetTargetRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetTargetRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -365,6 +381,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetTargetRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetTargetRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -446,8 +464,10 @@ npt_dispatch_IDXGIDecodeSwapChain_SetDestSize(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDecodeSwapChain_SetDestSize_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_SetDestSize: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -469,6 +489,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetDestSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetDestSize on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -487,6 +509,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetDestSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetDestSize: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -569,8 +593,10 @@ npt_dispatch_IDXGIDecodeSwapChain_GetSourceRect(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_GetSourceRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_GetSourceRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -592,6 +618,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetSourceRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetSourceRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -610,6 +638,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetSourceRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetSourceRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -692,8 +722,10 @@ npt_dispatch_IDXGIDecodeSwapChain_GetTargetRect(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_GetTargetRect_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_GetTargetRect: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -715,6 +747,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetTargetRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetTargetRect on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -733,6 +767,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetTargetRect(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetTargetRect: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -822,8 +858,10 @@ npt_dispatch_IDXGIDecodeSwapChain_GetDestSize(struct npt_dispatch_context *ctx,
 
     npt_decode_IDXGIDecodeSwapChain_GetDestSize_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_GetDestSize: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -845,6 +883,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetDestSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetDestSize on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -863,6 +903,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetDestSize(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetDestSize: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -941,8 +983,10 @@ npt_dispatch_IDXGIDecodeSwapChain_SetColorSpace(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_SetColorSpace_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_SetColorSpace: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -964,6 +1008,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetColorSpace(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetColorSpace on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -982,6 +1028,8 @@ npt_dispatch_IDXGIDecodeSwapChain_SetColorSpace(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_SetColorSpace: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1058,8 +1106,10 @@ npt_dispatch_IDXGIDecodeSwapChain_GetColorSpace(struct npt_dispatch_context *ctx
 
     npt_decode_IDXGIDecodeSwapChain_GetColorSpace_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("IDXGIDecodeSwapChain_GetColorSpace: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_IDXGIDECODESWAPCHAIN);
@@ -1081,6 +1131,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetColorSpace(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetColorSpace on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1099,6 +1151,8 @@ npt_dispatch_IDXGIDecodeSwapChain_GetColorSpace(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("IDXGIDecodeSwapChain_GetColorSpace: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

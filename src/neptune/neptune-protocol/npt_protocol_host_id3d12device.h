@@ -62,8 +62,10 @@ npt_dispatch_ID3D12Device_GetNodeCount(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_GetNodeCount_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetNodeCount: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -85,6 +87,8 @@ npt_dispatch_ID3D12Device_GetNodeCount(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetNodeCount on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -103,6 +107,8 @@ npt_dispatch_ID3D12Device_GetNodeCount(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetNodeCount: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -220,8 +226,10 @@ npt_dispatch_ID3D12Device_CreateCommandQueue(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateCommandQueue_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateCommandQueue: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -243,6 +251,8 @@ npt_dispatch_ID3D12Device_CreateCommandQueue(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandQueue on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -261,6 +271,8 @@ npt_dispatch_ID3D12Device_CreateCommandQueue(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandQueue: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -375,8 +387,10 @@ npt_dispatch_ID3D12Device_CreateCommandAllocator(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_CreateCommandAllocator_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateCommandAllocator: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -398,6 +412,8 @@ npt_dispatch_ID3D12Device_CreateCommandAllocator(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandAllocator on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -416,6 +432,8 @@ npt_dispatch_ID3D12Device_CreateCommandAllocator(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandAllocator: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -540,8 +558,10 @@ npt_dispatch_ID3D12Device_CreateGraphicsPipelineState(struct npt_dispatch_contex
 
     npt_decode_ID3D12Device_CreateGraphicsPipelineState_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateGraphicsPipelineState: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -563,6 +583,8 @@ npt_dispatch_ID3D12Device_CreateGraphicsPipelineState(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateGraphicsPipelineState on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -581,6 +603,8 @@ npt_dispatch_ID3D12Device_CreateGraphicsPipelineState(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateGraphicsPipelineState: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -705,8 +729,10 @@ npt_dispatch_ID3D12Device_CreateComputePipelineState(struct npt_dispatch_context
 
     npt_decode_ID3D12Device_CreateComputePipelineState_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateComputePipelineState: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -728,6 +754,8 @@ npt_dispatch_ID3D12Device_CreateComputePipelineState(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateComputePipelineState on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -746,6 +774,8 @@ npt_dispatch_ID3D12Device_CreateComputePipelineState(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateComputePipelineState: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -879,8 +909,10 @@ npt_dispatch_ID3D12Device_CreateCommandList(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateCommandList_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateCommandList: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -902,6 +934,8 @@ npt_dispatch_ID3D12Device_CreateCommandList(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandList on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -920,6 +954,8 @@ npt_dispatch_ID3D12Device_CreateCommandList(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandList: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1030,8 +1066,10 @@ npt_dispatch_ID3D12Device_CheckFeatureSupport(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CheckFeatureSupport_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CheckFeatureSupport: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1053,6 +1091,8 @@ npt_dispatch_ID3D12Device_CheckFeatureSupport(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CheckFeatureSupport on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1071,6 +1111,8 @@ npt_dispatch_ID3D12Device_CheckFeatureSupport(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CheckFeatureSupport: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1188,8 +1230,10 @@ npt_dispatch_ID3D12Device_CreateDescriptorHeap(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateDescriptorHeap_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateDescriptorHeap: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1211,6 +1255,8 @@ npt_dispatch_ID3D12Device_CreateDescriptorHeap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateDescriptorHeap on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1229,6 +1275,8 @@ npt_dispatch_ID3D12Device_CreateDescriptorHeap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateDescriptorHeap: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1312,8 +1360,10 @@ npt_dispatch_ID3D12Device_GetDescriptorHandleIncrementSize(struct npt_dispatch_c
 
     npt_decode_ID3D12Device_GetDescriptorHandleIncrementSize_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetDescriptorHandleIncrementSize: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1335,6 +1385,8 @@ npt_dispatch_ID3D12Device_GetDescriptorHandleIncrementSize(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetDescriptorHandleIncrementSize on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1353,6 +1405,8 @@ npt_dispatch_ID3D12Device_GetDescriptorHandleIncrementSize(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetDescriptorHandleIncrementSize: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1483,8 +1537,10 @@ npt_dispatch_ID3D12Device_CreateRootSignature(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateRootSignature_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateRootSignature: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1506,6 +1562,8 @@ npt_dispatch_ID3D12Device_CreateRootSignature(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateRootSignature on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1524,6 +1582,8 @@ npt_dispatch_ID3D12Device_CreateRootSignature(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateRootSignature: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1615,8 +1675,10 @@ npt_dispatch_ID3D12Device_CreateConstantBufferView(struct npt_dispatch_context *
 
     npt_decode_ID3D12Device_CreateConstantBufferView_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateConstantBufferView: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1638,6 +1700,8 @@ npt_dispatch_ID3D12Device_CreateConstantBufferView(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateConstantBufferView on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1656,6 +1720,8 @@ npt_dispatch_ID3D12Device_CreateConstantBufferView(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateConstantBufferView: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1750,8 +1816,10 @@ npt_dispatch_ID3D12Device_CreateShaderResourceView(struct npt_dispatch_context *
 
     npt_decode_ID3D12Device_CreateShaderResourceView_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateShaderResourceView: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1773,6 +1841,8 @@ npt_dispatch_ID3D12Device_CreateShaderResourceView(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateShaderResourceView on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1791,6 +1861,8 @@ npt_dispatch_ID3D12Device_CreateShaderResourceView(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateShaderResourceView: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1893,8 +1965,10 @@ npt_dispatch_ID3D12Device_CreateUnorderedAccessView(struct npt_dispatch_context 
 
     npt_decode_ID3D12Device_CreateUnorderedAccessView_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateUnorderedAccessView: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -1916,6 +1990,8 @@ npt_dispatch_ID3D12Device_CreateUnorderedAccessView(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateUnorderedAccessView on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1934,6 +2010,8 @@ npt_dispatch_ID3D12Device_CreateUnorderedAccessView(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateUnorderedAccessView: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2028,8 +2106,10 @@ npt_dispatch_ID3D12Device_CreateRenderTargetView(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_CreateRenderTargetView_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateRenderTargetView: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2051,6 +2131,8 @@ npt_dispatch_ID3D12Device_CreateRenderTargetView(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateRenderTargetView on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2069,6 +2151,8 @@ npt_dispatch_ID3D12Device_CreateRenderTargetView(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateRenderTargetView: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2163,8 +2247,10 @@ npt_dispatch_ID3D12Device_CreateDepthStencilView(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_CreateDepthStencilView_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateDepthStencilView: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2186,6 +2272,8 @@ npt_dispatch_ID3D12Device_CreateDepthStencilView(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateDepthStencilView on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2204,6 +2292,8 @@ npt_dispatch_ID3D12Device_CreateDepthStencilView(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateDepthStencilView: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2292,8 +2382,10 @@ npt_dispatch_ID3D12Device_CreateSampler(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateSampler_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateSampler: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2315,6 +2407,8 @@ npt_dispatch_ID3D12Device_CreateSampler(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateSampler on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2333,6 +2427,8 @@ npt_dispatch_ID3D12Device_CreateSampler(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateSampler: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2485,8 +2581,10 @@ npt_dispatch_ID3D12Device_CopyDescriptors(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CopyDescriptors_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CopyDescriptors: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2508,6 +2606,8 @@ npt_dispatch_ID3D12Device_CopyDescriptors(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CopyDescriptors on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2526,6 +2626,8 @@ npt_dispatch_ID3D12Device_CopyDescriptors(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CopyDescriptors: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2612,8 +2714,10 @@ npt_dispatch_ID3D12Device_CopyDescriptorsSimple(struct npt_dispatch_context *ctx
 
     npt_decode_ID3D12Device_CopyDescriptorsSimple_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CopyDescriptorsSimple: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2635,6 +2739,8 @@ npt_dispatch_ID3D12Device_CopyDescriptorsSimple(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CopyDescriptorsSimple on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2653,6 +2759,8 @@ npt_dispatch_ID3D12Device_CopyDescriptorsSimple(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CopyDescriptorsSimple: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2754,8 +2862,10 @@ npt_dispatch_ID3D12Device_GetResourceAllocationInfo(struct npt_dispatch_context 
 
     npt_decode_ID3D12Device_GetResourceAllocationInfo_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetResourceAllocationInfo: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2777,6 +2887,8 @@ npt_dispatch_ID3D12Device_GetResourceAllocationInfo(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetResourceAllocationInfo on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2795,6 +2907,8 @@ npt_dispatch_ID3D12Device_GetResourceAllocationInfo(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetResourceAllocationInfo: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2879,8 +2993,10 @@ npt_dispatch_ID3D12Device_GetCustomHeapProperties(struct npt_dispatch_context *c
 
     npt_decode_ID3D12Device_GetCustomHeapProperties_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetCustomHeapProperties: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -2902,6 +3018,8 @@ npt_dispatch_ID3D12Device_GetCustomHeapProperties(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetCustomHeapProperties on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -2920,6 +3038,8 @@ npt_dispatch_ID3D12Device_GetCustomHeapProperties(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetCustomHeapProperties: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3065,8 +3185,10 @@ npt_dispatch_ID3D12Device_CreateCommittedResource(struct npt_dispatch_context *c
 
     npt_decode_ID3D12Device_CreateCommittedResource_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateCommittedResource: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -3088,6 +3210,8 @@ npt_dispatch_ID3D12Device_CreateCommittedResource(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommittedResource on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3106,6 +3230,8 @@ npt_dispatch_ID3D12Device_CreateCommittedResource(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommittedResource: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3228,8 +3354,10 @@ npt_dispatch_ID3D12Device_CreateHeap(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateHeap_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateHeap: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -3251,6 +3379,8 @@ npt_dispatch_ID3D12Device_CreateHeap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateHeap on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3269,6 +3399,8 @@ npt_dispatch_ID3D12Device_CreateHeap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateHeap: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3414,8 +3546,10 @@ npt_dispatch_ID3D12Device_CreatePlacedResource(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreatePlacedResource_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreatePlacedResource: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -3437,6 +3571,8 @@ npt_dispatch_ID3D12Device_CreatePlacedResource(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreatePlacedResource on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3455,6 +3591,8 @@ npt_dispatch_ID3D12Device_CreatePlacedResource(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreatePlacedResource: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3589,8 +3727,10 @@ npt_dispatch_ID3D12Device_CreateReservedResource(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_CreateReservedResource_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateReservedResource: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -3612,6 +3752,8 @@ npt_dispatch_ID3D12Device_CreateReservedResource(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateReservedResource on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3630,6 +3772,8 @@ npt_dispatch_ID3D12Device_CreateReservedResource(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateReservedResource: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3742,8 +3886,10 @@ npt_dispatch_ID3D12Device_CreateSharedHandle(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateSharedHandle_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateSharedHandle: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -3765,6 +3911,8 @@ npt_dispatch_ID3D12Device_CreateSharedHandle(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateSharedHandle on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3783,6 +3931,8 @@ npt_dispatch_ID3D12Device_CreateSharedHandle(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateSharedHandle: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3897,8 +4047,10 @@ npt_dispatch_ID3D12Device_OpenSharedHandle(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_OpenSharedHandle_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_OpenSharedHandle: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -3920,6 +4072,8 @@ npt_dispatch_ID3D12Device_OpenSharedHandle(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_OpenSharedHandle on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -3938,6 +4092,8 @@ npt_dispatch_ID3D12Device_OpenSharedHandle(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_OpenSharedHandle: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4039,8 +4195,10 @@ npt_dispatch_ID3D12Device_OpenSharedHandleByName(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_OpenSharedHandleByName_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_OpenSharedHandleByName: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4062,6 +4220,8 @@ npt_dispatch_ID3D12Device_OpenSharedHandleByName(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_OpenSharedHandleByName on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4080,6 +4240,8 @@ npt_dispatch_ID3D12Device_OpenSharedHandleByName(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_OpenSharedHandleByName: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4185,8 +4347,10 @@ npt_dispatch_ID3D12Device_MakeResident(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_MakeResident_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_MakeResident: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4208,6 +4372,8 @@ npt_dispatch_ID3D12Device_MakeResident(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_MakeResident on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4226,6 +4392,8 @@ npt_dispatch_ID3D12Device_MakeResident(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_MakeResident: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4331,8 +4499,10 @@ npt_dispatch_ID3D12Device_Evict(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_Evict_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_Evict: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4354,6 +4524,8 @@ npt_dispatch_ID3D12Device_Evict(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_Evict on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4372,6 +4544,8 @@ npt_dispatch_ID3D12Device_Evict(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_Evict: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4484,8 +4658,10 @@ npt_dispatch_ID3D12Device_CreateFence(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateFence_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateFence: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4507,6 +4683,8 @@ npt_dispatch_ID3D12Device_CreateFence(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateFence on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4525,6 +4703,8 @@ npt_dispatch_ID3D12Device_CreateFence(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateFence: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4606,8 +4786,10 @@ npt_dispatch_ID3D12Device_GetDeviceRemovedReason(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_GetDeviceRemovedReason_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetDeviceRemovedReason: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4629,6 +4811,8 @@ npt_dispatch_ID3D12Device_GetDeviceRemovedReason(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetDeviceRemovedReason on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4647,6 +4831,8 @@ npt_dispatch_ID3D12Device_GetDeviceRemovedReason(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetDeviceRemovedReason: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4794,8 +4980,10 @@ npt_dispatch_ID3D12Device_GetCopyableFootprints(struct npt_dispatch_context *ctx
 
     npt_decode_ID3D12Device_GetCopyableFootprints_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetCopyableFootprints: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4817,6 +5005,8 @@ npt_dispatch_ID3D12Device_GetCopyableFootprints(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetCopyableFootprints on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4835,6 +5025,8 @@ npt_dispatch_ID3D12Device_GetCopyableFootprints(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetCopyableFootprints: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4952,8 +5144,10 @@ npt_dispatch_ID3D12Device_CreateQueryHeap(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_CreateQueryHeap_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateQueryHeap: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -4975,6 +5169,8 @@ npt_dispatch_ID3D12Device_CreateQueryHeap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateQueryHeap on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -4993,6 +5189,8 @@ npt_dispatch_ID3D12Device_CreateQueryHeap(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateQueryHeap: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5076,8 +5274,10 @@ npt_dispatch_ID3D12Device_SetStablePowerState(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_SetStablePowerState_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_SetStablePowerState: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -5099,6 +5299,8 @@ npt_dispatch_ID3D12Device_SetStablePowerState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_SetStablePowerState on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5117,6 +5319,8 @@ npt_dispatch_ID3D12Device_SetStablePowerState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_SetStablePowerState: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5242,8 +5446,10 @@ npt_dispatch_ID3D12Device_CreateCommandSignature(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device_CreateCommandSignature_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_CreateCommandSignature: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -5265,6 +5471,8 @@ npt_dispatch_ID3D12Device_CreateCommandSignature(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandSignature on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5283,6 +5491,8 @@ npt_dispatch_ID3D12Device_CreateCommandSignature(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_CreateCommandSignature: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5421,8 +5631,10 @@ npt_dispatch_ID3D12Device_GetResourceTiling(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_GetResourceTiling_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetResourceTiling: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -5444,6 +5656,8 @@ npt_dispatch_ID3D12Device_GetResourceTiling(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetResourceTiling on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5462,6 +5676,8 @@ npt_dispatch_ID3D12Device_GetResourceTiling(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetResourceTiling: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5539,8 +5755,10 @@ npt_dispatch_ID3D12Device_GetAdapterLuid(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device_GetAdapterLuid_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device_GetAdapterLuid: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE);
@@ -5562,6 +5780,8 @@ npt_dispatch_ID3D12Device_GetAdapterLuid(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetAdapterLuid on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5580,6 +5800,8 @@ npt_dispatch_ID3D12Device_GetAdapterLuid(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device_GetAdapterLuid: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5709,8 +5931,10 @@ npt_dispatch_ID3D12Device1_CreatePipelineLibrary(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device1_CreatePipelineLibrary_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device1_CreatePipelineLibrary: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE1);
@@ -5732,6 +5956,8 @@ npt_dispatch_ID3D12Device1_CreatePipelineLibrary(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device1_CreatePipelineLibrary on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5750,6 +5976,8 @@ npt_dispatch_ID3D12Device1_CreatePipelineLibrary(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device1_CreatePipelineLibrary: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5888,8 +6116,10 @@ npt_dispatch_ID3D12Device1_SetEventOnMultipleFenceCompletion(struct npt_dispatch
 
     npt_decode_ID3D12Device1_SetEventOnMultipleFenceCompletion_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device1_SetEventOnMultipleFenceCompletion: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE1);
@@ -5911,6 +6141,8 @@ npt_dispatch_ID3D12Device1_SetEventOnMultipleFenceCompletion(struct npt_dispatch
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device1_SetEventOnMultipleFenceCompletion on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -5929,6 +6161,8 @@ npt_dispatch_ID3D12Device1_SetEventOnMultipleFenceCompletion(struct npt_dispatch
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device1_SetEventOnMultipleFenceCompletion: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6051,8 +6285,10 @@ npt_dispatch_ID3D12Device1_SetResidencyPriority(struct npt_dispatch_context *ctx
 
     npt_decode_ID3D12Device1_SetResidencyPriority_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device1_SetResidencyPriority: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE1);
@@ -6074,6 +6310,8 @@ npt_dispatch_ID3D12Device1_SetResidencyPriority(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device1_SetResidencyPriority on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6092,6 +6330,8 @@ npt_dispatch_ID3D12Device1_SetResidencyPriority(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device1_SetResidencyPriority: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6211,8 +6451,10 @@ npt_dispatch_ID3D12Device2_CreatePipelineState(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device2_CreatePipelineState_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device2_CreatePipelineState: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE2);
@@ -6234,6 +6476,8 @@ npt_dispatch_ID3D12Device2_CreatePipelineState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device2_CreatePipelineState on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6252,6 +6496,8 @@ npt_dispatch_ID3D12Device2_CreatePipelineState(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device2_CreatePipelineState: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6367,8 +6613,10 @@ npt_dispatch_ID3D12Device3_OpenExistingHeapFromAddress(struct npt_dispatch_conte
 
     npt_decode_ID3D12Device3_OpenExistingHeapFromAddress_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device3_OpenExistingHeapFromAddress: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE3);
@@ -6390,6 +6638,8 @@ npt_dispatch_ID3D12Device3_OpenExistingHeapFromAddress(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device3_OpenExistingHeapFromAddress on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6408,6 +6658,8 @@ npt_dispatch_ID3D12Device3_OpenExistingHeapFromAddress(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device3_OpenExistingHeapFromAddress: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6527,8 +6779,10 @@ npt_dispatch_ID3D12Device3_OpenExistingHeapFromFileMapping(struct npt_dispatch_c
 
     npt_decode_ID3D12Device3_OpenExistingHeapFromFileMapping_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device3_OpenExistingHeapFromFileMapping: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE3);
@@ -6550,6 +6804,8 @@ npt_dispatch_ID3D12Device3_OpenExistingHeapFromFileMapping(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device3_OpenExistingHeapFromFileMapping on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6568,6 +6824,8 @@ npt_dispatch_ID3D12Device3_OpenExistingHeapFromFileMapping(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device3_OpenExistingHeapFromFileMapping: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6692,8 +6950,10 @@ npt_dispatch_ID3D12Device3_EnqueueMakeResident(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device3_EnqueueMakeResident_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device3_EnqueueMakeResident: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE3);
@@ -6715,6 +6975,8 @@ npt_dispatch_ID3D12Device3_EnqueueMakeResident(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device3_EnqueueMakeResident on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6733,6 +6995,8 @@ npt_dispatch_ID3D12Device3_EnqueueMakeResident(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device3_EnqueueMakeResident: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6848,8 +7112,10 @@ npt_dispatch_ID3D12Device4_CreateCommandList1(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device4_CreateCommandList1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device4_CreateCommandList1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE4);
@@ -6871,6 +7137,8 @@ npt_dispatch_ID3D12Device4_CreateCommandList1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateCommandList1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -6889,6 +7157,8 @@ npt_dispatch_ID3D12Device4_CreateCommandList1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateCommandList1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7011,8 +7281,10 @@ npt_dispatch_ID3D12Device4_CreateProtectedResourceSession(struct npt_dispatch_co
 
     npt_decode_ID3D12Device4_CreateProtectedResourceSession_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device4_CreateProtectedResourceSession: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE4);
@@ -7034,6 +7306,8 @@ npt_dispatch_ID3D12Device4_CreateProtectedResourceSession(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateProtectedResourceSession on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7052,6 +7326,8 @@ npt_dispatch_ID3D12Device4_CreateProtectedResourceSession(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateProtectedResourceSession: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7208,8 +7484,10 @@ npt_dispatch_ID3D12Device4_CreateCommittedResource1(struct npt_dispatch_context 
 
     npt_decode_ID3D12Device4_CreateCommittedResource1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device4_CreateCommittedResource1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE4);
@@ -7231,6 +7509,8 @@ npt_dispatch_ID3D12Device4_CreateCommittedResource1(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateCommittedResource1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7249,6 +7529,8 @@ npt_dispatch_ID3D12Device4_CreateCommittedResource1(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateCommittedResource1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7379,8 +7661,10 @@ npt_dispatch_ID3D12Device4_CreateHeap1(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device4_CreateHeap1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device4_CreateHeap1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE4);
@@ -7402,6 +7686,8 @@ npt_dispatch_ID3D12Device4_CreateHeap1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateHeap1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7420,6 +7706,8 @@ npt_dispatch_ID3D12Device4_CreateHeap1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateHeap1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7562,8 +7850,10 @@ npt_dispatch_ID3D12Device4_CreateReservedResource1(struct npt_dispatch_context *
 
     npt_decode_ID3D12Device4_CreateReservedResource1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device4_CreateReservedResource1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE4);
@@ -7585,6 +7875,8 @@ npt_dispatch_ID3D12Device4_CreateReservedResource1(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateReservedResource1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7603,6 +7895,8 @@ npt_dispatch_ID3D12Device4_CreateReservedResource1(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_CreateReservedResource1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7725,8 +8019,10 @@ npt_dispatch_ID3D12Device4_GetResourceAllocationInfo1(struct npt_dispatch_contex
 
     npt_decode_ID3D12Device4_GetResourceAllocationInfo1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device4_GetResourceAllocationInfo1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE4);
@@ -7748,6 +8044,8 @@ npt_dispatch_ID3D12Device4_GetResourceAllocationInfo1(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_GetResourceAllocationInfo1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7766,6 +8064,8 @@ npt_dispatch_ID3D12Device4_GetResourceAllocationInfo1(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device4_GetResourceAllocationInfo1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7882,8 +8182,10 @@ npt_dispatch_ID3D12Device5_CreateLifetimeTracker(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device5_CreateLifetimeTracker_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_CreateLifetimeTracker: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -7905,6 +8207,8 @@ npt_dispatch_ID3D12Device5_CreateLifetimeTracker(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CreateLifetimeTracker on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -7923,6 +8227,8 @@ npt_dispatch_ID3D12Device5_CreateLifetimeTracker(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CreateLifetimeTracker: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8003,8 +8309,10 @@ npt_dispatch_ID3D12Device5_RemoveDevice(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device5_RemoveDevice_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_RemoveDevice: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8026,6 +8334,8 @@ npt_dispatch_ID3D12Device5_RemoveDevice(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_RemoveDevice on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8044,6 +8354,8 @@ npt_dispatch_ID3D12Device5_RemoveDevice(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_RemoveDevice: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8141,8 +8453,10 @@ npt_dispatch_ID3D12Device5_EnumerateMetaCommands(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device5_EnumerateMetaCommands_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_EnumerateMetaCommands: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8164,6 +8478,8 @@ npt_dispatch_ID3D12Device5_EnumerateMetaCommands(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_EnumerateMetaCommands on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8182,6 +8498,8 @@ npt_dispatch_ID3D12Device5_EnumerateMetaCommands(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_EnumerateMetaCommands: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8298,8 +8616,10 @@ npt_dispatch_ID3D12Device5_EnumerateMetaCommandParameters(struct npt_dispatch_co
 
     npt_decode_ID3D12Device5_EnumerateMetaCommandParameters_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_EnumerateMetaCommandParameters: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8321,6 +8641,8 @@ npt_dispatch_ID3D12Device5_EnumerateMetaCommandParameters(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_EnumerateMetaCommandParameters on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8339,6 +8661,8 @@ npt_dispatch_ID3D12Device5_EnumerateMetaCommandParameters(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_EnumerateMetaCommandParameters: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8479,8 +8803,10 @@ npt_dispatch_ID3D12Device5_CreateMetaCommand(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device5_CreateMetaCommand_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_CreateMetaCommand: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8502,6 +8828,8 @@ npt_dispatch_ID3D12Device5_CreateMetaCommand(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CreateMetaCommand on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8520,6 +8848,8 @@ npt_dispatch_ID3D12Device5_CreateMetaCommand(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CreateMetaCommand: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8644,8 +8974,10 @@ npt_dispatch_ID3D12Device5_CreateStateObject(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device5_CreateStateObject_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_CreateStateObject: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8667,6 +8999,8 @@ npt_dispatch_ID3D12Device5_CreateStateObject(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CreateStateObject on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8685,6 +9019,8 @@ npt_dispatch_ID3D12Device5_CreateStateObject(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CreateStateObject: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8782,8 +9118,10 @@ npt_dispatch_ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo(struct
 
     npt_decode_ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8805,6 +9143,8 @@ npt_dispatch_ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo(struct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8823,6 +9163,8 @@ npt_dispatch_ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo(struct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_GetRaytracingAccelerationStructurePrebuildInfo: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8912,8 +9254,10 @@ npt_dispatch_ID3D12Device5_CheckDriverMatchingIdentifier(struct npt_dispatch_con
 
     npt_decode_ID3D12Device5_CheckDriverMatchingIdentifier_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device5_CheckDriverMatchingIdentifier: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE5);
@@ -8935,6 +9279,8 @@ npt_dispatch_ID3D12Device5_CheckDriverMatchingIdentifier(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CheckDriverMatchingIdentifier on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -8953,6 +9299,8 @@ npt_dispatch_ID3D12Device5_CheckDriverMatchingIdentifier(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device5_CheckDriverMatchingIdentifier: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9049,8 +9397,10 @@ npt_dispatch_ID3D12Device6_SetBackgroundProcessingMode(struct npt_dispatch_conte
 
     npt_decode_ID3D12Device6_SetBackgroundProcessingMode_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device6_SetBackgroundProcessingMode: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE6);
@@ -9072,6 +9422,8 @@ npt_dispatch_ID3D12Device6_SetBackgroundProcessingMode(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device6_SetBackgroundProcessingMode on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9090,6 +9442,8 @@ npt_dispatch_ID3D12Device6_SetBackgroundProcessingMode(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device6_SetBackgroundProcessingMode: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9218,8 +9572,10 @@ npt_dispatch_ID3D12Device7_AddToStateObject(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device7_AddToStateObject_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device7_AddToStateObject: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE7);
@@ -9241,6 +9597,8 @@ npt_dispatch_ID3D12Device7_AddToStateObject(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device7_AddToStateObject on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9259,6 +9617,8 @@ npt_dispatch_ID3D12Device7_AddToStateObject(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device7_AddToStateObject: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9379,8 +9739,10 @@ npt_dispatch_ID3D12Device7_CreateProtectedResourceSession1(struct npt_dispatch_c
 
     npt_decode_ID3D12Device7_CreateProtectedResourceSession1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device7_CreateProtectedResourceSession1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE7);
@@ -9402,6 +9764,8 @@ npt_dispatch_ID3D12Device7_CreateProtectedResourceSession1(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device7_CreateProtectedResourceSession1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9420,6 +9784,8 @@ npt_dispatch_ID3D12Device7_CreateProtectedResourceSession1(struct npt_dispatch_c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device7_CreateProtectedResourceSession1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9542,8 +9908,10 @@ npt_dispatch_ID3D12Device8_GetResourceAllocationInfo2(struct npt_dispatch_contex
 
     npt_decode_ID3D12Device8_GetResourceAllocationInfo2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device8_GetResourceAllocationInfo2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE8);
@@ -9565,6 +9933,8 @@ npt_dispatch_ID3D12Device8_GetResourceAllocationInfo2(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_GetResourceAllocationInfo2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9583,6 +9953,8 @@ npt_dispatch_ID3D12Device8_GetResourceAllocationInfo2(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_GetResourceAllocationInfo2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9736,8 +10108,10 @@ npt_dispatch_ID3D12Device8_CreateCommittedResource2(struct npt_dispatch_context 
 
     npt_decode_ID3D12Device8_CreateCommittedResource2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device8_CreateCommittedResource2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE8);
@@ -9759,6 +10133,8 @@ npt_dispatch_ID3D12Device8_CreateCommittedResource2(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_CreateCommittedResource2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9777,6 +10153,8 @@ npt_dispatch_ID3D12Device8_CreateCommittedResource2(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_CreateCommittedResource2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9922,8 +10300,10 @@ npt_dispatch_ID3D12Device8_CreatePlacedResource1(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12Device8_CreatePlacedResource1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device8_CreatePlacedResource1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE8);
@@ -9945,6 +10325,8 @@ npt_dispatch_ID3D12Device8_CreatePlacedResource1(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_CreatePlacedResource1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -9963,6 +10345,8 @@ npt_dispatch_ID3D12Device8_CreatePlacedResource1(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_CreatePlacedResource1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10061,8 +10445,10 @@ npt_dispatch_ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView(struct npt_d
 
     npt_decode_ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE8);
@@ -10084,6 +10470,8 @@ npt_dispatch_ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10102,6 +10490,8 @@ npt_dispatch_ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView(struct npt_d
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_CreateSamplerFeedbackUnorderedAccessView: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10249,8 +10639,10 @@ npt_dispatch_ID3D12Device8_GetCopyableFootprints1(struct npt_dispatch_context *c
 
     npt_decode_ID3D12Device8_GetCopyableFootprints1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device8_GetCopyableFootprints1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE8);
@@ -10272,6 +10664,8 @@ npt_dispatch_ID3D12Device8_GetCopyableFootprints1(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_GetCopyableFootprints1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10290,6 +10684,8 @@ npt_dispatch_ID3D12Device8_GetCopyableFootprints1(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device8_GetCopyableFootprints1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10407,8 +10803,10 @@ npt_dispatch_ID3D12Device9_CreateShaderCacheSession(struct npt_dispatch_context 
 
     npt_decode_ID3D12Device9_CreateShaderCacheSession_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device9_CreateShaderCacheSession: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE9);
@@ -10430,6 +10828,8 @@ npt_dispatch_ID3D12Device9_CreateShaderCacheSession(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device9_CreateShaderCacheSession on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10448,6 +10848,8 @@ npt_dispatch_ID3D12Device9_CreateShaderCacheSession(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device9_CreateShaderCacheSession: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10534,8 +10936,10 @@ npt_dispatch_ID3D12Device9_ShaderCacheControl(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device9_ShaderCacheControl_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device9_ShaderCacheControl: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE9);
@@ -10557,6 +10961,8 @@ npt_dispatch_ID3D12Device9_ShaderCacheControl(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device9_ShaderCacheControl on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10575,6 +10981,8 @@ npt_dispatch_ID3D12Device9_ShaderCacheControl(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device9_ShaderCacheControl: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10703,8 +11111,10 @@ npt_dispatch_ID3D12Device9_CreateCommandQueue1(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device9_CreateCommandQueue1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device9_CreateCommandQueue1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE9);
@@ -10726,6 +11136,8 @@ npt_dispatch_ID3D12Device9_CreateCommandQueue1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device9_CreateCommandQueue1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10744,6 +11156,8 @@ npt_dispatch_ID3D12Device9_CreateCommandQueue1(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device9_CreateCommandQueue1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10920,8 +11334,10 @@ npt_dispatch_ID3D12Device10_CreateCommittedResource3(struct npt_dispatch_context
 
     npt_decode_ID3D12Device10_CreateCommittedResource3_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device10_CreateCommittedResource3: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE10);
@@ -10943,6 +11359,8 @@ npt_dispatch_ID3D12Device10_CreateCommittedResource3(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device10_CreateCommittedResource3 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -10961,6 +11379,8 @@ npt_dispatch_ID3D12Device10_CreateCommittedResource3(struct npt_dispatch_context
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device10_CreateCommittedResource3: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11126,8 +11546,10 @@ npt_dispatch_ID3D12Device10_CreatePlacedResource2(struct npt_dispatch_context *c
 
     npt_decode_ID3D12Device10_CreatePlacedResource2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device10_CreatePlacedResource2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE10);
@@ -11149,6 +11571,8 @@ npt_dispatch_ID3D12Device10_CreatePlacedResource2(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device10_CreatePlacedResource2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11167,6 +11591,8 @@ npt_dispatch_ID3D12Device10_CreatePlacedResource2(struct npt_dispatch_context *c
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device10_CreatePlacedResource2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11329,8 +11755,10 @@ npt_dispatch_ID3D12Device10_CreateReservedResource2(struct npt_dispatch_context 
 
     npt_decode_ID3D12Device10_CreateReservedResource2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device10_CreateReservedResource2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE10);
@@ -11352,6 +11780,8 @@ npt_dispatch_ID3D12Device10_CreateReservedResource2(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device10_CreateReservedResource2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11370,6 +11800,8 @@ npt_dispatch_ID3D12Device10_CreateReservedResource2(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device10_CreateReservedResource2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11463,8 +11895,10 @@ npt_dispatch_ID3D12Device11_CreateSampler2(struct npt_dispatch_context *ctx,
 
     npt_decode_ID3D12Device11_CreateSampler2_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device11_CreateSampler2: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE11);
@@ -11486,6 +11920,8 @@ npt_dispatch_ID3D12Device11_CreateSampler2(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device11_CreateSampler2 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11504,6 +11940,8 @@ npt_dispatch_ID3D12Device11_CreateSampler2(struct npt_dispatch_context *ctx,
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device11_CreateSampler2: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11642,8 +12080,10 @@ npt_dispatch_ID3D12Device12_GetResourceAllocationInfo3(struct npt_dispatch_conte
 
     npt_decode_ID3D12Device12_GetResourceAllocationInfo3_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device12_GetResourceAllocationInfo3: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE12);
@@ -11665,6 +12105,8 @@ npt_dispatch_ID3D12Device12_GetResourceAllocationInfo3(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device12_GetResourceAllocationInfo3 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11683,6 +12125,8 @@ npt_dispatch_ID3D12Device12_GetResourceAllocationInfo3(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device12_GetResourceAllocationInfo3: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11798,8 +12242,10 @@ npt_dispatch_ID3D12Device13_OpenExistingHeapFromAddress1(struct npt_dispatch_con
 
     npt_decode_ID3D12Device13_OpenExistingHeapFromAddress1_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device13_OpenExistingHeapFromAddress1: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE13);
@@ -11821,6 +12267,8 @@ npt_dispatch_ID3D12Device13_OpenExistingHeapFromAddress1(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device13_OpenExistingHeapFromAddress1 on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11839,6 +12287,8 @@ npt_dispatch_ID3D12Device13_OpenExistingHeapFromAddress1(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device13_OpenExistingHeapFromAddress1: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -11986,8 +12436,10 @@ npt_dispatch_ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary(struct npt
 
     npt_decode_ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12DEVICE14);
@@ -12009,6 +12461,8 @@ npt_dispatch_ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary(struct npt
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -12027,6 +12481,8 @@ npt_dispatch_ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary(struct npt
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12Device14_CreateRootSignatureFromSubobjectInLibrary: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

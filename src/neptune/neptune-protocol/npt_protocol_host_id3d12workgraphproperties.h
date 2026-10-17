@@ -62,8 +62,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumWorkGraphs(struct npt_dispatch_cont
 
     npt_decode_ID3D12WorkGraphProperties_GetNumWorkGraphs_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetNumWorkGraphs: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -85,6 +87,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumWorkGraphs(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNumWorkGraphs on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -103,6 +107,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumWorkGraphs(struct npt_dispatch_cont
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNumWorkGraphs: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -190,8 +196,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetWorkGraphIndex(struct npt_dispatch_con
 
     npt_decode_ID3D12WorkGraphProperties_GetWorkGraphIndex_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetWorkGraphIndex: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -213,6 +221,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetWorkGraphIndex(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetWorkGraphIndex on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -231,6 +241,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetWorkGraphIndex(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetWorkGraphIndex: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -309,8 +321,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumNodes(struct npt_dispatch_context *
 
     npt_decode_ID3D12WorkGraphProperties_GetNumNodes_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetNumNodes: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -332,6 +346,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumNodes(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNumNodes on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -350,6 +366,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumNodes(struct npt_dispatch_context *
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNumNodes: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -433,8 +451,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeID(struct npt_dispatch_context *ct
 
     npt_decode_ID3D12WorkGraphProperties_GetNodeID_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetNodeID: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -456,6 +476,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeID(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNodeID on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -474,6 +496,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeID(struct npt_dispatch_context *ct
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNodeID: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -557,8 +581,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeIndex(struct npt_dispatch_context 
 
     npt_decode_ID3D12WorkGraphProperties_GetNodeIndex_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetNodeIndex: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -580,6 +606,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeIndex(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNodeIndex on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -598,6 +626,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeIndex(struct npt_dispatch_context 
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNodeIndex: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -679,8 +709,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex(struc
 
     npt_decode_ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -702,6 +734,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex(struc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -720,6 +754,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex(struc
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNodeLocalRootArgumentsTableIndex: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -798,8 +834,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumEntrypoints(struct npt_dispatch_con
 
     npt_decode_ID3D12WorkGraphProperties_GetNumEntrypoints_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetNumEntrypoints: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -821,6 +859,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumEntrypoints(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNumEntrypoints on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -839,6 +879,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetNumEntrypoints(struct npt_dispatch_con
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetNumEntrypoints: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -922,8 +964,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointID(struct npt_dispatch_conte
 
     npt_decode_ID3D12WorkGraphProperties_GetEntrypointID_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointID: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -945,6 +989,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointID(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointID on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -963,6 +1009,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointID(struct npt_dispatch_conte
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointID: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1046,8 +1094,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointIndex(struct npt_dispatch_co
 
     npt_decode_ID3D12WorkGraphProperties_GetEntrypointIndex_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointIndex: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -1069,6 +1119,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointIndex(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointIndex on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1087,6 +1139,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointIndex(struct npt_dispatch_co
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointIndex: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1168,8 +1222,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes(struct npt
 
     npt_decode_ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -1191,6 +1247,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes(struct npt
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1209,6 +1267,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes(struct npt
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetEntrypointRecordSizeInBytes: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1293,8 +1353,10 @@ npt_dispatch_ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements(struct npt
 
     npt_decode_ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D12WORKGRAPHPROPERTIES);
@@ -1316,6 +1378,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements(struct npt
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -1334,6 +1398,8 @@ npt_dispatch_ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements(struct npt
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }

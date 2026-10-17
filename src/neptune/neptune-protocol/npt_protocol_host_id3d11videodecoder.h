@@ -75,8 +75,10 @@ npt_dispatch_ID3D11VideoDecoder_GetCreationParameters(struct npt_dispatch_contex
 
     npt_decode_ID3D11VideoDecoder_GetCreationParameters_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoDecoder_GetCreationParameters: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEODECODER);
@@ -98,6 +100,8 @@ npt_dispatch_ID3D11VideoDecoder_GetCreationParameters(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoDecoder_GetCreationParameters on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -116,6 +120,8 @@ npt_dispatch_ID3D11VideoDecoder_GetCreationParameters(struct npt_dispatch_contex
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoDecoder_GetCreationParameters: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -197,8 +203,10 @@ npt_dispatch_ID3D11VideoDecoder_GetDriverHandle(struct npt_dispatch_context *ctx
 
     npt_decode_ID3D11VideoDecoder_GetDriverHandle_args_temp(ctx->decoder, &args);
 
-    if (npt_cs_decoder_get_fatal(ctx->decoder))
+    if (npt_cs_decoder_get_fatal(ctx->decoder)) {
+        npt_log("ID3D11VideoDecoder_GetDriverHandle: malformed arguments");
         return;
+    }
 
     args._self = npt_cs_handle_lookup(ctx, object_id,
                                        NPT_OBJECT_TYPE_ID3D11VIDEODECODER);
@@ -220,6 +228,8 @@ npt_dispatch_ID3D11VideoDecoder_GetDriverHandle(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoDecoder_GetDriverHandle on unregistered object 0x%016" PRIx64
+                " owes a reply", (uint64_t)object_id);
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
@@ -238,6 +248,8 @@ npt_dispatch_ID3D11VideoDecoder_GetDriverHandle(struct npt_dispatch_context *ctx
             npt_cs_decoder_reset_temp_pool(ctx->decoder);
             return;
         }
+        npt_log("ID3D11VideoDecoder_GetDriverHandle: an argument handle is unknown to this "
+                "context and the call owes a reply");
         npt_cs_decoder_set_fatal(ctx->decoder);
         return;
     }
