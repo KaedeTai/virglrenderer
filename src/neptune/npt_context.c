@@ -1415,8 +1415,15 @@ npt_context_dispatch_one_command(struct npt_context *ctx,
 bool
 npt_context_submit_cmd(struct npt_context *ctx, const void *buffer, size_t size)
 {
+   /* A fatal context decodes nothing more, but its submits must still
+    * succeed: the render server tears the whole context down on a failed
+    * op, and the fences the guest has in flight on it then never retire.
+    * Under WDDM a fence that never retires is a hung engine, and dxgkrnl
+    * resets the whole adapter -- every guest process loses its device for
+    * one process's bad command.  The guest learns of the failure from the
+    * ring's FATAL status instead. */
    if (ctx->cs_fatal_error)
-      return false;
+      return true;
 
    struct npt_cs_decoder *dec = &ctx->decoder;
    npt_cs_decoder_set_buffer_stream(dec, buffer, size);
