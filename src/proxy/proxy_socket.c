@@ -72,8 +72,12 @@ proxy_socket_fini(struct proxy_socket *socket)
 bool
 proxy_socket_is_connected(const struct proxy_socket *socket)
 {
+   /* POLLIN, not 0: macOS reports POLLHUP on a stream socket whose peer is
+    * gone only alongside a requested POLLIN; with no events requested it
+    * reports nothing at all. */
    struct pollfd poll_fd = {
       .fd = socket->fd,
+      .events = POLLIN,
    };
 
    while (true) {

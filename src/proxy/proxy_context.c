@@ -108,17 +108,19 @@ proxy_context_load_timeline_seqno(struct proxy_context *ctx, uint32_t ring_idx)
 static bool
 proxy_context_retire_timeline_fences_locked(struct proxy_context *ctx,
                                             uint32_t ring_idx,
-                                            uint32_t cur_seqno)
+                                            uint32_t cur_seqno,
+                                            bool timed_out)
 {
    struct proxy_timeline *timeline = &ctx->timelines[ring_idx];
    bool force_retire_all = false;
 
    /* check if the socket has been disconnected (i.e., the other end has
-    * crashed) if no progress is made after a while
+    * crashed) if no progress is made after a while -- or at once on a
+    * timed-out wake, which only happens when the worker has gone quiet
     */
    if (timeline->cur_seqno == cur_seqno && !list_is_empty(&timeline->fences)) {
       timeline->cur_seqno_stall_count++;
-      if (timeline->cur_seqno_stall_count < 100 ||
+      if ((timeline->cur_seqno_stall_count < 100 && !timed_out) ||
           proxy_socket_is_connected(&ctx->socket))
          return false;
 
@@ -149,7 +151,7 @@ proxy_context_retire_timeline_fences_locked(struct proxy_context *ctx,
 }
 
 static void
-proxy_context_retire_fences_internal(struct proxy_context *ctx)
+proxy_context_retire_fences_internal(struct proxy_context *ctx, bool timed_out)
 {
    if (ctx->sync_thread.fence_eventfd >= 0)
       flush_eventfd(ctx->sync_thread.fence_eventfd);
@@ -162,7 +164,8 @@ proxy_context_retire_fences_internal(struct proxy_context *ctx)
    while (old_busy_mask) {
       const uint32_t ring_idx = u_bit_scan64(&old_busy_mask);
       const uint32_t cur_seqno = proxy_context_load_timeline_seqno(ctx, ring_idx);
-      if (!proxy_context_retire_timeline_fences_locked(ctx, ring_idx, cur_seqno))
+      if (!proxy_context_retire_timeline_fences_locked(ctx, ring_idx, cur_seqno,
+                                                       timed_out))
          new_busy_mask |= 1ull << ring_idx;
    }
 
@@ -188,17 +191,27 @@ proxy_context_sync_thread(void *arg)
 
    assert(proxy_renderer.flags & VIRGL_RENDERER_ASYNC_FENCE_CB);
 
+   /* macOS never reports POLLHUP for poll_fds[1] (see
+    * proxy_socket_is_connected), so a worker that dies with fences in flight
+    * would leave this thread asleep and those fences unretired for good -- a
+    * hung engine to the guest.  Wake periodically there instead. */
+#ifdef __APPLE__
+   const int timeout_ms = 100;
+#else
+   const int timeout_ms = -1;
+#endif
+
    while (!ctx->sync_thread.stop) {
-      const int ret = poll(poll_fds, ARRAY_SIZE(poll_fds), -1);
-      if (ret <= 0) {
-         if (ret < 0 && (errno == EINTR || errno == EAGAIN))
+      const int ret = poll(poll_fds, ARRAY_SIZE(poll_fds), timeout_ms);
+      if (ret < 0) {
+         if (errno == EINTR || errno == EAGAIN)
             continue;
 
          proxy_log("failed to poll fence eventfd");
          break;
       }
 
-      proxy_context_retire_fences_internal(ctx);
+      proxy_context_retire_fences_internal(ctx, ret == 0);
    }
 
    return 0;
@@ -357,7 +370,7 @@ proxy_context_retire_fences(struct virgl_context *base)
    struct proxy_context *ctx = (struct proxy_context *)base;
 
    assert(!(proxy_renderer.flags & VIRGL_RENDERER_ASYNC_FENCE_CB));
-   proxy_context_retire_fences_internal(ctx);
+   proxy_context_retire_fences_internal(ctx, false);
 }
 
 static int
