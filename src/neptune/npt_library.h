@@ -94,6 +94,9 @@ struct npt_d3d_library {
     * E_NOTIMPL. */
    PFN_dxn_d3d11_buffer_bind_external_fd pfn_d3d11_buffer_bind_external_fd;
    PFN_dxn_d3d11_buffer_external_cookie pfn_d3d11_buffer_external_cookie;
+   /* Optional: names the guest program for the backend's per-application
+    * profiles.  NULL => the backend sees virgl_render_server. */
+   PFN_dxn_set_executable_path pfn_set_executable_path;
    enum npt_backend_kind backend;
 
    /* NPT_WA_* bits describing the workarounds the loaded backend needs, set in

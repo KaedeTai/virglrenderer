@@ -6,6 +6,7 @@
 #include "npt_common.h"
 
 #include <stdlib.h>
+#include <strings.h>
 
 #ifdef HAVE_DLFCN_H
 #include <dlfcn.h>
@@ -194,6 +195,29 @@ npt_renderer_lookup_context(uint32_t ctx_id)
    return NULL;
 }
 
+/* The guest names a context after its program's .exe (the Windows UMD and
+ * nptunix both send its file name).  Hand that to the backend so its
+ * per-application profiles match the guest program, not
+ * virgl_render_server.  Backends pick a profile once per process, so only
+ * a process's first context counts -- with process workers, every one. */
+static void
+npt_renderer_set_executable(uint32_t nlen, const char *name)
+{
+   PFN_dxn_set_executable_path set = npt_state.library.pfn_set_executable_path;
+   char exe[65];
+
+   if (!set || !list_is_empty(&npt_state.contexts) || !name)
+      return;
+   nlen = MIN2(nlen, sizeof(exe) - 1);
+   memcpy(exe, name, nlen);
+   exe[nlen] = '\0';
+   nlen = strlen(exe);
+   if (nlen < 5 || strcasecmp(exe + nlen - 4, ".exe"))
+      return;
+   if (set(exe) < 0)
+      npt_log("backend refused executable name %s", exe);
+}
+
 bool
 npt_renderer_create_context(uint32_t ctx_id,
                             uint32_t ctx_flags,
@@ -214,6 +238,8 @@ npt_renderer_create_context(uint32_t ctx_id,
 
    npt_renderer_retire_fence_callback_type retire_cb =
       npt_state.cbs ? npt_state.cbs->retire_fence : NULL;
+
+   npt_renderer_set_executable(nlen, name);
 
    struct npt_context *ctx =
       npt_context_create(ctx_id, retire_cb, nlen, name);

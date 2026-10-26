@@ -158,8 +158,8 @@ npt_library_load_embedder_api(struct npt_d3d_library *lib)
                                           DXN_SYM_EVENT_DUP_FD) }).f;
 
       /* The rest is optional: a backend without NT-style handles, D3D12
-       * heap import or external DYNAMIC buffers exports nothing for it, and
-       * the users fail cleanly. */
+       * heap import, external DYNAMIC buffers or per-application profiles
+       * exports nothing for it, and the users fail cleanly. */
       lib->pfn_shared_handle_close =
          ((union { void *p; PFN_dxn_shared_handle_close f; }){
             .p = npt_library_embedder_sym_optional(mod, prefix,
@@ -176,6 +176,10 @@ npt_library_load_embedder_api(struct npt_d3d_library *lib)
          ((union { void *p; PFN_dxn_d3d11_buffer_external_cookie f; }){
             .p = npt_library_embedder_sym_optional(
                mod, prefix, DXN_SYM_D3D11_BUFFER_EXTERNAL_COOKIE) }).f;
+      lib->pfn_set_executable_path =
+         ((union { void *p; PFN_dxn_set_executable_path f; }){
+            .p = npt_library_embedder_sym_optional(
+               mod, prefix, DXN_SYM_SET_EXECUTABLE_PATH) }).f;
       return true;
    }
    npt_log("backend embedder API (dmn_/dxmt_" DXN_SYM_NATIVE_ABI_VERSION
