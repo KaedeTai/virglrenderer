@@ -127,6 +127,7 @@ neptune_sources = [
    'neptune/npt_overrides_toplevel.c',
    'neptune/npt_overrides_shared_handle.c',
    'neptune/npt_overrides_d3d12_device.c',
+   'neptune/npt_overrides_d3d12_pipeline.c',
    'neptune/npt_overrides_d3d12_fence.c',
 ]
 

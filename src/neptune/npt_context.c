@@ -150,6 +150,7 @@ npt_context_init_dispatch(struct npt_context *ctx)
    d->id3d11device5_dispatch_overrides = &npt_id3d11device5_overrides;
    d->id3d11fence_dispatch_overrides = &npt_id3d11fence_overrides;
    d->id3d12device_dispatch_overrides = &npt_id3d12device_overrides;
+   d->id3d12device2_dispatch_overrides = &npt_id3d12device2_overrides;
    d->id3d11devicecontext_dispatch_overrides = &npt_query_dc_overrides;
    d->id3d11devicecontext4_dispatch_overrides = &npt_fence_dc4_overrides;
    d->id3d12commandqueue_dispatch_overrides =
@@ -163,13 +164,16 @@ npt_context_init_dispatch(struct npt_context *ctx)
  * counts the registrations the id stands for -- its first, plus one per
  * canonical answer that named it again -- each holding one host-library
  * ref and each dropped by one COM_RELEASE.  A failed Create's record
- * has no host_ptr and no identity. */
+ * has no host_ptr and no identity, and neither does a pending one: an
+ * asynchronous Create (`pending`, see npt_context_create_async) that has
+ * not run yet. */
 struct npt_object {
    uint64_t id;
    npt_object_type type;
    void *host_ptr;
    void *identity;
    uint32_t regs;
+   struct npt_async_create *pending;
 };
 
 /* Every id registered for one host object, keyed by its IUnknown.  The
@@ -491,19 +495,178 @@ npt_context_register_failed_object(struct npt_context *ctx, uint64_t id)
    if (!id || !ctx || !ctx->object_table)
       return;
 
+   /* An id already in the table has its own outcome: in particular a
+    * Create handed to a worker (npt_context_create_async) registers the
+    * id first and reports a failure itself. */
    mtx_lock(&ctx->object_mutex);
-   if (!_mesa_hash_table_search(ctx->object_table, &id)) {
-      struct npt_object *e = calloc(1, sizeof(*e));
-      if (e) {
-         e->id = id;
-         _mesa_hash_table_insert(ctx->object_table, &e->id, e);
-         if (ctx->object_waiters)
-            cnd_broadcast(&ctx->object_cond);
-      }
+   if (_mesa_hash_table_search(ctx->object_table, &id)) {
+      mtx_unlock(&ctx->object_mutex);
+      return;
+   }
+   struct npt_object *e = calloc(1, sizeof(*e));
+   if (e) {
+      e->id = id;
+      _mesa_hash_table_insert(ctx->object_table, &e->id, e);
+      if (ctx->object_waiters)
+         cnd_broadcast(&ctx->object_cond);
    }
    mtx_unlock(&ctx->object_mutex);
    npt_log("object table: Create for id 0x%016" PRIx64 " failed on the "
            "host; its calls will be dropped", id);
+}
+
+/* Run a job taken off the queue (its `started` already set) and publish
+ * the outcome on its pending entry.  Called without object_mutex. */
+static void
+npt_async_create_execute(struct npt_context *ctx, struct npt_async_create *job)
+{
+   void *obj = job->run(job);
+   const bool failed = !obj;
+   void *identity = obj ? npt_object_identity_of(obj) : NULL;
+
+   mtx_lock(&ctx->object_mutex);
+   struct hash_entry *entry =
+      _mesa_hash_table_search(ctx->object_table, &job->guest_id);
+   /* Every path that removes an id settles it first, so the entry is
+    * still there and still ours. */
+   struct npt_object *e = entry ? entry->data : NULL;
+   assert(e && e->pending == job);
+   if (e) {
+      e->pending = NULL;
+      if (obj) {
+         e->host_ptr = obj;
+         e->identity = identity;
+         npt_identity_add_locked(ctx, identity, e->id);
+         obj = NULL;
+      }
+   }
+   if (ctx->object_waiters)
+      cnd_broadcast(&ctx->object_cond);
+   mtx_unlock(&ctx->object_mutex);
+
+   if (obj)
+      npt_com_release(obj);
+   if (failed)
+      npt_log("object table: Create for id 0x%016" PRIx64 " failed on the "
+              "host; its calls will be dropped", job->guest_id);
+   job->destroy(job);
+}
+
+/* Caller holds object_mutex.  An entry whose Create is still pending is
+ * settled before anyone uses it: run here when no worker has started it
+ * (a use is waiting, so it jumps the queue), otherwise wait for the
+ * worker.  Returns the entry for the same id, now settled. */
+static struct npt_object *
+npt_context_settle_locked(struct npt_context *ctx, struct npt_object *e)
+{
+   while (e && e->pending) {
+      struct npt_async_create *job = e->pending;
+      const uint64_t id = e->id;
+      if (!job->started) {
+         job->started = true;
+         list_del(&job->head);
+         mtx_unlock(&ctx->object_mutex);
+         npt_async_create_execute(ctx, job);
+         mtx_lock(&ctx->object_mutex);
+      } else {
+         ctx->object_waiters++;
+         cnd_wait(&ctx->object_cond, &ctx->object_mutex);
+         ctx->object_waiters--;
+      }
+      struct hash_entry *entry = _mesa_hash_table_search(ctx->object_table, &id);
+      e = entry ? entry->data : NULL;
+   }
+   return e;
+}
+
+static int
+npt_async_create_worker(void *arg)
+{
+   struct npt_context *ctx = arg;
+
+   char thread_name[16];
+   snprintf(thread_name, ARRAY_SIZE(thread_name), "npt-create-%u",
+            ctx->ctx_id);
+   u_thread_setname(thread_name);
+
+   mtx_lock(&ctx->object_mutex);
+   for (;;) {
+      if (ctx->async_create.stop)
+         break;
+      if (list_is_empty(&ctx->async_create.queue)) {
+         cnd_wait(&ctx->async_create.cond, &ctx->object_mutex);
+         continue;
+      }
+      struct npt_async_create *job =
+         list_first_entry(&ctx->async_create.queue, struct npt_async_create,
+                          head);
+      list_del(&job->head);
+      job->started = true;
+      mtx_unlock(&ctx->object_mutex);
+      npt_async_create_execute(ctx, job);
+      mtx_lock(&ctx->object_mutex);
+   }
+   mtx_unlock(&ctx->object_mutex);
+   return 0;
+}
+
+bool
+npt_context_create_async(struct npt_context *ctx,
+                         struct npt_async_create *job)
+{
+   if (!job->guest_id || !ctx->object_table)
+      return false;
+
+   mtx_lock(&ctx->object_mutex);
+   if (ctx->async_create.stop ||
+       _mesa_hash_table_search(ctx->object_table, &job->guest_id)) {
+      mtx_unlock(&ctx->object_mutex);
+      return false;
+   }
+   while (ctx->async_create.thread_count < NPT_ASYNC_CREATE_THREADS) {
+      thrd_t *t = &ctx->async_create.threads[ctx->async_create.thread_count];
+      if (thrd_create(t, npt_async_create_worker, ctx) != thrd_success)
+         break;
+      ctx->async_create.thread_count++;
+   }
+   struct npt_object *e = ctx->async_create.thread_count ?
+                          calloc(1, sizeof(*e)) : NULL;
+   if (!e) {
+      mtx_unlock(&ctx->object_mutex);
+      return false;
+   }
+   e->id = job->guest_id;
+   e->type = job->type;
+   e->regs = 1;
+   e->pending = job;
+   job->started = false;
+   _mesa_hash_table_insert(ctx->object_table, &e->id, e);
+   list_addtail(&job->head, &ctx->async_create.queue);
+   cnd_signal(&ctx->async_create.cond);
+   if (ctx->object_waiters)
+      cnd_broadcast(&ctx->object_cond);
+   mtx_unlock(&ctx->object_mutex);
+   return true;
+}
+
+/* Context teardown, after every ring has stopped: nothing can queue or
+ * wait any more.  Running jobs finish; queued ones are dropped with
+ * their entries. */
+static void
+npt_async_create_fini(struct npt_context *ctx)
+{
+   mtx_lock(&ctx->object_mutex);
+   ctx->async_create.stop = true;
+   cnd_broadcast(&ctx->async_create.cond);
+   mtx_unlock(&ctx->object_mutex);
+   for (uint32_t i = 0; i < ctx->async_create.thread_count; i++)
+      thrd_join(ctx->async_create.threads[i], NULL);
+   ctx->async_create.thread_count = 0;
+   list_for_each_entry_safe(struct npt_async_create, job,
+                            &ctx->async_create.queue, head) {
+      list_del(&job->head);
+      job->destroy(job);
+   }
 }
 
 /* Caller holds object_mutex.  Wait (bounded) for `id` to be registered
@@ -603,9 +766,10 @@ npt_context_object_is(struct npt_context *ctx, uint64_t id,
    mtx_lock(&ctx->object_mutex);
    const struct hash_entry *entry =
       _mesa_hash_table_search(ctx->object_table, &id);
-   const struct npt_object *obj = entry ? entry->data : NULL;
+   struct npt_object *obj = entry ? entry->data : NULL;
    if (!obj && npt_ring_current())
       obj = npt_context_await_object_locked(ctx, id);
+   obj = npt_context_settle_locked(ctx, obj);
    const npt_object_type actual = obj ? obj->type : (npt_object_type)0;
    const bool present = obj && obj->host_ptr;
    mtx_unlock(&ctx->object_mutex);
@@ -657,12 +821,13 @@ npt_context_lookup_object_impl(struct npt_context *ctx,
    mtx_lock(&ctx->object_mutex);
    const struct hash_entry *entry =
       _mesa_hash_table_search(ctx->object_table, &id);
-   const struct npt_object *obj = entry ? entry->data : NULL;
+   struct npt_object *obj = entry ? entry->data : NULL;
    /* Rings decode in parallel, so a use can reach this ring before the
     * ring carrying the Create has registered the id.  Wait for it here
     * rather than have the guest serialise the two rings. */
    if (!obj && !permissive && npt_ring_current())
       obj = npt_context_await_object_locked(ctx, id);
+   obj = npt_context_settle_locked(ctx, obj);
    const bool failed_create = obj && !obj->host_ptr;
    if (failed_create)
       obj = NULL;
@@ -728,11 +893,13 @@ npt_context_release_object(struct npt_context *ctx, uint64_t guest_id)
    mtx_lock(&ctx->object_mutex);
    struct hash_entry *entry =
       _mesa_hash_table_search(ctx->object_table, &guest_id);
-   if (!entry) {
+   struct npt_object *e =
+      npt_context_settle_locked(ctx, entry ? entry->data : NULL);
+   if (!e) {
       mtx_unlock(&ctx->object_mutex);
       return;
    }
-   struct npt_object *e = entry->data;
+   entry = _mesa_hash_table_search(ctx->object_table, &guest_id);
    void *obj = e->host_ptr;
    if (obj && e->regs > 1) {
       /* A surplus registration: the id stays, with the state keyed by
@@ -777,9 +944,10 @@ npt_context_query_interface(struct npt_context *ctx,
    mtx_lock(&ctx->object_mutex);
    struct hash_entry *entry =
       _mesa_hash_table_search(ctx->object_table, &src_guest_id);
-   const struct npt_object *obj = entry ? entry->data : NULL;
+   struct npt_object *obj = entry ? entry->data : NULL;
    if (!obj && src_guest_id && npt_ring_current())
       obj = npt_context_await_object_locked(ctx, src_guest_id);
+   obj = npt_context_settle_locked(ctx, obj);
    if (obj) {
       src = obj->host_ptr;
       identity = obj->identity;
@@ -1006,6 +1174,9 @@ npt_context_create(uint32_t ctx_id,
    if (cnd_init(&ctx->object_cond) != thrd_success)
       goto err_object_cond;
    ctx->object_waiters = 0;
+   if (cnd_init(&ctx->async_create.cond) != thrd_success)
+      goto err_async_create_cond;
+   list_inithead(&ctx->async_create.queue);
    for (uint32_t i = 0; i < NPT_CS_LOOKUP_CACHE_SIZE; i++)
       atomic_store_explicit(&ctx->object_gen[i], 0, memory_order_relaxed);
 
@@ -1047,6 +1218,8 @@ err_identity_table:
 err_object_table:
    mtx_destroy(&ctx->deferred_mutex);
 err_deferred_mutex:
+   cnd_destroy(&ctx->async_create.cond);
+err_async_create_cond:
    cnd_destroy(&ctx->object_cond);
 err_object_cond:
    mtx_destroy(&ctx->object_mutex);
@@ -1116,6 +1289,8 @@ npt_context_destroy(struct npt_context *ctx)
    free(ctx->destroyed_ring_ids);
    mtx_destroy(&ctx->deferred_mutex);
 
+   npt_async_create_fini(ctx);
+
    /* Guests are expected to release every COM object before context
     * teardown.  Free any straggler entries to plug a guest leak. */
    hash_table_foreach(ctx->object_table, entry) {
@@ -1128,6 +1303,7 @@ npt_context_destroy(struct npt_context *ctx)
       free(ident);
    }
    _mesa_hash_table_destroy(ctx->identity_table, NULL);
+   cnd_destroy(&ctx->async_create.cond);
    cnd_destroy(&ctx->object_cond);
    mtx_destroy(&ctx->object_mutex);
 

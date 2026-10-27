@@ -17,6 +17,11 @@
 #include "neptune-protocol/npt_protocol_transport.h"
 #include "virgl_resource.h"
 
+/* Workers per context for npt_context_create_async.  A pipeline compile
+ * is CPU-bound in the backend, and an app that creates pipelines from
+ * several threads expects them to compile side by side. */
+#define NPT_ASYNC_CREATE_THREADS 4
+
 struct npt_queue;
 
 /* Server-created resource (a shared texture's dmabuf export) that the
@@ -160,6 +165,17 @@ struct npt_context {
     * object_mutex. */
    cnd_t object_cond;
    uint32_t object_waiters;
+   /* Creates that run off the ring thread (npt_context_create_async):
+    * the jobs no thread has picked up yet, oldest first, and the
+    * workers that run them, started on first use.  All under
+    * object_mutex. */
+   struct {
+      struct list_head queue;
+      cnd_t cond;
+      thrd_t threads[NPT_ASYNC_CREATE_THREADS];
+      uint32_t thread_count;
+      bool stop;
+   } async_create;
 
    /* COM_RELEASEs decoded while another ring still had published-but-
     * undecoded bytes; each waits, through a watch on every such ring,
@@ -436,6 +452,29 @@ npt_context_register_failed_object(struct npt_context *ctx, uint64_t id);
 
 void
 npt_context_unregister_object(struct npt_context *ctx, uint64_t id);
+
+/* A Create the ring thread hands to a worker.  The job owns copies of
+ * everything its arguments point at; `run` makes the object (NULL on
+ * failure) and `destroy` frees the job, run or not. */
+struct npt_async_create {
+   struct list_head head;
+   uint64_t guest_id;
+   npt_object_type type;
+   /* Picked up by a worker or a waiting lookup.  Under object_mutex. */
+   bool started;
+   void *(*run)(struct npt_async_create *job);
+   void (*destroy)(struct npt_async_create *job);
+};
+
+/* Register job->guest_id as pending and queue the job.  Until it has
+ * run, a lookup of the id waits for it -- or runs it on the spot when no
+ * worker has started it -- so later commands see the object exactly as
+ * if the Create had run inline.  False (job untouched) when the id is
+ * already registered or no worker can start; the caller then creates
+ * inline. */
+bool
+npt_context_create_async(struct npt_context *ctx,
+                         struct npt_async_create *job);
 
 /* Whether the registered object is compatible with `want`, with none of
  * npt_context_lookup_object's miss diagnostics: an id of another type is

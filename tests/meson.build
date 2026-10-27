@@ -127,6 +127,7 @@ if with_neptune
 
    neptune_tests = [
       ['test_neptune_init', 'test_neptune_init.c'],
+      ['test_neptune_async_create', 'test_neptune_async_create.c'],
    ]
 
    # Neptune init forks the render server, so point at the in-tree
