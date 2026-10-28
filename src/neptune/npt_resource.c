@@ -320,6 +320,17 @@ npt_resource_map_pinned(struct npt_context *ctx,
       hr = map_fn(imm_ctx, resource, subresource,
                   d3d11_map_type, api_map_flags, &mapped);
 
+      /* A DO_NOT_WAIT Map that finds the resource busy must still make
+       * progress: neither backend commits the pending work behind it, so
+       * an app that polls (Media Foundation's surface lock does) would see
+       * WAS_STILL_DRAWING forever.  Flush, as a native driver does. */
+      if (NPT_FAILED(hr) && (api_map_flags & D3D11_MAP_FLAG_DO_NOT_WAIT)) {
+         PFN_ID3D11DeviceContext_Flush flush_fn =
+            NPT_COM_VTBL_FUNC(PFN_ID3D11DeviceContext_Flush,
+                              npt_com_vtable(imm_ctx),
+                              NPT_VTBL_ID3D11DeviceContext_Flush);
+         flush_fn(imm_ctx);
+      }
       if (NPT_FAILED(hr))
          return hr;
 
